@@ -1,0 +1,20 @@
+format: jb-article
+root: chapters/intro
+title: Introduction
+options:
+  numbered: true
+sections:
+- file: chapters/01/what-is-data-science
+  title: Data Science
+  sections:
+  - file: chapters/01/1/intro
+    title: Introduction
+    sections:
+    - file: chapters/01/1/1/computational-tools
+      title: Computational Tools
+    - file: chapters/01/1/2/statistical-techniques
+      title: Statistical Techniques
+  - file: chapters/01/2/why-data-science
+    title: Why Data Science?
+  - file: chapters/01/3/Data_Science_Life_Cycle
+    title: Data Science Lifecycle
