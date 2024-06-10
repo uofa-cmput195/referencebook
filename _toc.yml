@@ -16,5 +16,11 @@ sections:
       title: Statistical Techniques
   - file: chapters/01/2/why-data-science
     title: Why Data Science?
-  - file: chapters/01/3/Data_Science_Life_Cycle
+  - file: chapters/01/3/importance-and-impact-of-datascience
+    title: Importance and Impact of Data Science
+  - file: chapters/01/4/applications-and use-cases
+    title: Key Applications and Use Cases
+  - file: chapters/01/5/Data_Science_Life_Cycle
     title: Data Science Lifecycle
+  - file: chapters/01/6/Summary-1
+    title: Summary

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.3. Data Science Lifecycle &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>1.5. Data Science Lifecycle &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -70,12 +70,13 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/3/Data_Science_Life_Cycle';</script>
-    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/01/3/Data_Science_Life_Cycle.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/5/Data_Science_Life_Cycle';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/01/5/Data_Science_Life_Cycle.html" />
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="prev" title="1.2. Why Data Science?" href="../2/why-data-science.html" />
+    <link rel="next" title="1.6. Summary" href="../6/Summary-1.html" />
+    <link rel="prev" title="1.4. Key Applications and Use Cases" href="../4/applications-and%20use-cases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,7 +191,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../2/why-data-science.html">1.2. Why Data Science?</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6/Summary-1.html">1.6. Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -262,7 +266,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/01/3/Data_Science_Life_Cycle.md" target="_blank"
+      <li><a href="../../../_sources/chapters/01/5/Data_Science_Life_Cycle.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +337,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -349,6 +355,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-questions-or-problems">1.5.1. Formulating Questions or Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquiring-and-preparing-data">1.5.2. Acquiring and Preparing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-exploratory-data-analysis">1.5.3. Performing Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-predictions-and-drawing-inferences">1.5.4. Making Predictions and Drawing Inferences</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -359,7 +376,50 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-science-lifecycle">
-<h1><span class="section-number">1.3. </span>Data Science Lifecycle<a class="headerlink" href="#data-science-lifecycle" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">1.5. </span>Data Science Lifecycle<a class="headerlink" href="#data-science-lifecycle" title="Link to this heading">#</a></h1>
+<p>Data science leverages extensive and varied datasets to draw insights and conclusions about the world. This chapter explores the fundamental principles and methodologies of data science, emphasizing both computational and inferential approaches. The data science process generally involves the following steps:</p>
+<section id="formulating-questions-or-problems">
+<h2><span class="section-number">1.5.1. </span>Formulating Questions or Problems<a class="headerlink" href="#formulating-questions-or-problems" title="Link to this heading">#</a></h2>
+<p>The first step is to clearly define what we want to know or what problems we are trying to solve. This involves setting a clear, concise, and actionable problem statement.</p>
+<p><strong>Key Tasks:</strong></p>
+<ul class="simple">
+<li><p>Define the Problem Statement: Clearly articulate the problem, including the scope, objectives, and constraints.</p></li>
+<li><p>Formulate Hypotheses: Develop hypotheses to guide the analysis.</p></li>
+<li><p>Establish Metrics of Success: Determine the criteria for evaluating the success of the analysis.</p></li>
+</ul>
+</section>
+<section id="acquiring-and-preparing-data">
+<h2><span class="section-number">1.5.2. </span>Acquiring and Preparing Data<a class="headerlink" href="#acquiring-and-preparing-data" title="Link to this heading">#</a></h2>
+<p>Once the problem is defined, the next step is to gather relevant data from various sources and prepare it for analysis. This is often one of the most time-consuming steps, as it involves ensuring the data is accurate and usable.</p>
+<p><strong>Key Tasks:</strong></p>
+<ul class="simple">
+<li><p>Identify Data Sources: Determine where and how to obtain the necessary data (databases, APIs, web scraping, etc.).</p></li>
+<li><p>Collect Data: Use appropriate methods to gather data.</p></li>
+<li><p>Clean Data: Handle missing values, remove duplicates, and correct errors to ensure data quality.</p></li>
+</ul>
+</section>
+<section id="performing-exploratory-data-analysis">
+<h2><span class="section-number">1.5.3. </span>Performing Exploratory Data Analysis<a class="headerlink" href="#performing-exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>Exploratory Data Analysis (EDA) involves discovering traits about the data that inform future analysis. This step helps in understanding the structure, distribution, and key characteristics of the data.</p>
+<p><strong>Key Tasks:</strong></p>
+<ul class="simple">
+<li><p>Summarize Data: Use descriptive statistics and visualizations to summarize the data.</p></li>
+<li><p>Identify Patterns and Relationships: Look for patterns, biases, anomalies, or other issues with the data.</p></li>
+<li><p>Transform Data: Prepare the data for further analysis by creating new features or transforming existing ones.</p></li>
+</ul>
+</section>
+<section id="making-predictions-and-drawing-inferences">
+<h2><span class="section-number">1.5.4. </span>Making Predictions and Drawing Inferences<a class="headerlink" href="#making-predictions-and-drawing-inferences" title="Link to this heading">#</a></h2>
+<p>This step involves using statistical and machine learning techniques to draw conclusions from the data. We build models to make predictions and validate these predictions through inference.</p>
+<p><strong>Key Tasks:</strong></p>
+<ul class="simple">
+<li><p>Select Algorithms: Choose appropriate algorithms for the problem (regression, classification, clustering, etc.).</p></li>
+<li><p>Build Models: Train models using the prepared data.</p></li>
+<li><p>Evaluate Models: Assess model performance using metrics like accuracy, precision, recall, and others.</p></li>
+<li><p>Draw Conclusions: Use the model’s output to answer the initial questions and validate hypotheses.</p></li>
+</ul>
+<p>Each step in this lifecycle is crucial and presents unique challenges that reveal deep insights, ultimately aiding in making informed decisions based on data. This process is iterative; new questions often arise after completing these steps, prompting continuous exploration and analysis, a concept known as the data science lifecycle.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -375,7 +435,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/01/3"
+            path: "./chapters/01/5"
         },
         predefinedOutput: true
     }
@@ -393,13 +453,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../2/why-data-science.html"
+       href="../4/applications-and%20use-cases.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Why Data Science?</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Key Applications and Use Cases</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../6/Summary-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.6. </span>Summary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -408,7 +477,23 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-questions-or-problems">1.5.1. Formulating Questions or Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquiring-and-preparing-data">1.5.2. Acquiring and Preparing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-exploratory-data-analysis">1.5.3. Performing Exploratory Data Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-predictions-and-drawing-inferences">1.5.4. Making Predictions and Drawing Inferences</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
