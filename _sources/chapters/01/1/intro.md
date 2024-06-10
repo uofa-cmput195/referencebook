@@ -6,7 +6,8 @@ stored on computers. Computers enable us to infer properties of the world from
 these descriptions. Data science is the discipline of drawing conclusions from
 data using computation. There are three core aspects of effective data
 analysis: exploration, prediction, and inference. This text develops a
-consistent approach to all three, introducing statistical ideas and fundamental computational techniques for data science concurrently. We focus on a minimal set of core
+consistent approach to all three, introducing statistical ideas and fundamental 
+computational techniques for data science concurrently. We focus on a minimal set of core
 techniques that can be applied to a vast range of real-world
 applications. A foundation in data science requires not only understanding
 statistical and computational techniques, but also recognizing how they apply
@@ -29,7 +30,7 @@ completed. Rather than assuming that temperatures vary in a particular way, we
 will learn to use randomness as a way to imagine many possible scenarios that
 are all consistent with the data we observe.
 
-Applying this approach requires learning to program a computer, and so this
+Applying this approach requires computer programming, and so this
 text interleaves an introduction to programming necessary for data science. 
 Readers with programming experience will find that we cover several
 topics in computation that do not appear in a typical introductory computer
