@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.2. Why Data Science? &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>2. Causality and Experiments &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -18,41 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-148221575-1"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -61,7 +61,7 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -70,13 +70,13 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/2/why-data-science';</script>
-    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/01/2/why-data-science.html" />
-    <link rel="icon" href="../../../_static/logo.png"/>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="1.3. Importance and Impact of Data Science" href="../3/importance-and-impact-of-datascience.html" />
-    <link rel="prev" title="1.1.2. Statistical Techniques" href="../1/2/statistical-techniques.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02/causality-and-experiments';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/02/causality-and-experiments.html" />
+    <link rel="icon" href="../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.1. Observation and Visualization: John Snow and the Broad Street Pump" href="1/observation-and-visualization-john-snow-and-the-broad-street-pump.html" />
+    <link rel="prev" title="1.6. Summary" href="../01/6/Summary-1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -112,7 +112,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../../search.html"
+      action="../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -154,7 +154,7 @@
 
   
 
-<a class="navbar-brand logo" href="../../intro.html">
+<a class="navbar-brand logo" href="../intro.html">
   
   
   
@@ -165,8 +165,8 @@
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
   
   
 </a></div>
@@ -184,25 +184,25 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../what-is-data-science.html">1. Data Science</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01/1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. Why Data Science?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../6/Summary-1.html">1.6. Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/2/why-data-science.html">1.2. Why Data Science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/6/Summary-1.html">1.6. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/causality-and-experiments.html">2. Causality and Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02/2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02/3/establishing-causality.html">2.3. Establishing Causality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02/4/randomization.html">2.4. Randomization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. Causality and Experiments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3/establishing-causality.html">2.3. Establishing Causality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4/randomization.html">2.4. Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
 </ul>
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/01/2/why-data-science.md" target="_blank"
+      <li><a href="../../_sources/chapters/02/causality-and-experiments.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Why Data Science?</h1>
+    <h1>Causality and Experiments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -370,32 +370,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="why-data-science">
-<h1><span class="section-number">1.2. </span>Why Data Science?<a class="headerlink" href="#why-data-science" title="Link to this heading">#</a></h1>
-<p>Most important decisions are made with only partial information and uncertain
-outcomes. However, the degree of uncertainty for many decisions can be reduced
-sharply by access to large data sets and the computational tools
-required to analyze them effectively. Data-driven decision making has already
-transformed a tremendous breadth of industries, including finance, advertising,
-manufacturing, and real estate. At the same time, a wide range of academic
-disciplines are evolving rapidly to incorporate large-scale data analysis into
-their theory and practice.</p>
-<p>Studying data science enables individuals to bring these techniques to bear on
-their work, their scientific endeavors, and their personal decisions. Critical
-thinking has long been a hallmark of a rigorous education, but critiques are
-often most effective when supported by data. A critical analysis of any aspect
-of the world, may it be business or social science, involves inductive
-reasoning; conclusions can rarely be proven outright, but only supported by
-the available evidence. Data science provides the means to make precise,
-reliable, and quantitative arguments about any set of observations. With
-unprecedented access to information and computing, critical thinking about
-any aspect of the world that can be measured would be incomplete without
-effective inferential techniques.</p>
-<p>The world has too many unanswered questions and difficult challenges to leave
-this critical reasoning to only a few specialists. All educated members of
-society can build the capacity to reason about data. The tools, techniques,
-and data sets are all readily available; this text aims to make them
-accessible to everyone.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="causality-and-experiments">
+<h1><span class="section-number">2. </span>Causality and Experiments<a class="headerlink" href="#causality-and-experiments" title="Link to this heading">#</a></h1>
+<p><em>“These problems are, and will probably ever remain, among the inscrutable
+secrets of nature. They belong to a class of questions radically inaccessible to
+the human intelligence.”</em> —The Times of London, September 1849, on how cholera
+is contracted and spread</p>
+<p>Does the death penalty have a deterrent effect? Is chocolate good for you? What
+causes breast cancer?</p>
+<p>All of these questions attempt to assign a cause to an effect. A careful
+examination of data can help shed light on questions like these. In this section
+you will learn some of the fundamental concepts involved in establishing
+causality.</p>
+<p>Observation is a key to good science. An <em>observational study</em> is one in which
+scientists make conclusions based on data that they have observed but had no
+hand in generating. In data science, many such studies involve observations on a
+group of individuals, a factor of interest called a <em>treatment</em>, and an
+<em>outcome</em> measured on each individual.</p>
+<p>It is easiest to think of the individuals as people. In a study of whether
+chocolate is good for the health, the individuals would indeed be people, the
+treatment would be eating chocolate, and the outcome might be a measure of heart disease. But individuals in observational studies need not be people. In a
+study of whether the death penalty has a deterrent effect, the individuals could
+be the 50 states of the union. A state law allowing the death penalty would be
+the treatment, and an outcome could be the state’s murder rate.</p>
+<p>The fundamental question is whether the treatment has an effect on the outcome.
+Any relation between the treatment and the outcome is called an <em>association</em>.
+If the treatment causes the outcome to occur, then the association is <em>causal</em>.
+<em>Causality</em> is at the heart of all three questions posed at the start of this
+section. For example, one of the questions was whether chocolate directly causes
+improvements in health, not just whether there there is a relation between
+chocolate and health.</p>
+<p>The establishment of causality often takes place in two stages. First, an
+association is observed. Next, a more careful analysis leads to a decision about
+causality.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -411,7 +420,7 @@ accessible to everyone.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/01/2"
+            path: "./chapters/02"
         },
         predefinedOutput: true
     }
@@ -429,20 +438,20 @@ accessible to everyone.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../1/2/statistical-techniques.html"
+       href="../01/6/Summary-1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.1.2. </span>Statistical Techniques</p>
+        <p class="prev-next-title"><span class="section-number">1.6. </span>Summary</p>
       </div>
     </a>
     <a class="right-next"
-       href="../3/importance-and-impact-of-datascience.html"
+       href="1/observation-and-visualization-john-snow-and-the-broad-street-pump.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Importance and Impact of Data Science</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Observation and Visualization: John Snow and the Broad Street Pump</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -498,8 +507,8 @@ By Rejwana Haque
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
