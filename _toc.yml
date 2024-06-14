@@ -37,3 +37,8 @@ sections:
     title: Randomization
   - file: chapters/02/5/endnote
     title: Endnote
+- file: chapters/03/Tables
+  title: Working with Tabular Data
+  sections:
+  - file: chapters/03/1/Index-Slice-Sort
+    title: Selecting and Sorting

@@ -1,0 +1,1634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Working with Tabular Data &#8212; Introduction to Principles and Techniques of Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-148221575-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/1/Tables';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/1/Tables.html" />
+    <link rel="icon" href="../../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/2/why-data-science.html">1.2. Why Data Science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/6/Summary-1.html">1.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/causality-and-experiments.html">2. Causality and Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/3/establishing-causality.html">2.3. Establishing Causality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/4/randomization.html">2.4. Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/uofa-cmput195/referencebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/03/1/Tables.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with Tabular Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-tabular-data">
+<h1>Working with Tabular Data<a class="headerlink" href="#working-with-tabular-data" title="Link to this heading">#</a></h1>
+<p>Tabular data is one of the most common and useful forms of data for analysis. Tables are a fundamental object type for representing data sets. A table can be viewed in two ways:</p>
+<ul class="simple">
+<li><p>a sequence of named columns that each describe a single aspect of all entries in a data set, or</p></li>
+<li><p>a sequence of rows that each contain all information about a single entry in a data set.</p></li>
+</ul>
+<p>The row and column are the two main components of a table.</p>
+<p>In order to use tables, we will use <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, the standard Python library for working with tabular data. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is the current tool of choice in both industry and academia for working with tabular data. It is more important that you understand the types of useful operations on data than the exact details of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> syntax.  The full documentation to the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library can be found <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/"><code class="docutils literal notranslate"><span class="pre">pandas</span></code> documentation</a>. Because we will cover only the most important pandas functions in the CMPUT 195 course, you should bookmark the full documentation for reference when you conduct your own data analyses. Let’s begin by importing <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pd is a common shorthand for pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h2>Creating DataFrame</h2>
+Tables created using `pandas` are called a DataFrame object. Empty DataFrames can be created using the `DataFrame` function. An empty dataframe is useful because it can be extended to contain new rows and columns.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To create a DataFrame with data we use Python dictionary as data. This dictionary structure is a common way to represent tabular data before converting it to a more convenient format like a DataFrame.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame(data) function converts the dictionary data into a DataFrame, which is a two-dimensional labeled data structure with columns of potentially different types. The resulting DataFrame flowers will have two columns (‘Number of petals’ and ‘Name’) and three rows, corresponding to the entries in the lists. You can create a DataFrame with one or multiple columns. Note that, all columns must have the same length, or an error will occur.</p>
+<p>Below, we create a DataFrame with some initial data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Number of petals&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;Name&#39;</span><span class="p">:[</span><span class="s1">&#39;lotus&#39;</span><span class="p">,</span> <span class="s1">&#39;sunflower&#39;</span><span class="p">,</span> <span class="s1">&#39;rose&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">flowers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">flowers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of petals</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>lotus</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>34</td>
+      <td>sunflower</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>rose</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the above examples you see that there is an additional column created. The additional column is called <code class="docutils literal notranslate"><span class="pre">index</span></code>, which is another main component of a DataFrame. It serves as a unique identifier for each row, enabling quick data retrieval and alignment. In the example above, the default index values are 0, 1, and 2. The index can be customized to fit the needs of the analysis, making it a powerful feature for managing and analyzing data in Pandas.</p>
+<p>We can extend the DataFrame with another column. To add a column to a DataFrame <code class="docutils literal notranslate"><span class="pre">assign</span></code> method is used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flowers</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of petals</th>
+      <th>Name</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>lotus</td>
+      <td>pink</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>34</td>
+      <td>sunflower</td>
+      <td>yellow</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>rose</td>
+      <td>red</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">assign</span></code> method creates a new DataFrame each time it is called, so the original DataFrame is not affected. For example, the DataFrame <code class="docutils literal notranslate"><span class="pre">flowers</span></code> still has only the two columns that it had when it was created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flowers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of petals</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>lotus</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>34</td>
+      <td>sunflower</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>rose</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To modify the original DataFrame you need to assign it to a new DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flowers</span> <span class="o">=</span> <span class="n">flowers</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">])</span>
+<span class="n">flowers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of petals</th>
+      <th>Name</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>lotus</td>
+      <td>pink</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>34</td>
+      <td>sunflower</td>
+      <td>yellow</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>rose</td>
+      <td>red</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h2>Reading DataFrame</h2>
+Creating DataFrames in this way involves a lot of typing. If the data have already been entered somewhere, it is usually possible to use `pandas` to read it into a DataFrame, instead of typing it all in cell by cell.
+<p>Often, DataFrames are created from files that contain comma-separated values. Such files are called CSV files.</p>
+<p>Below, we use the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> method <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> to read a CSV file that contains imdb top 200 movies up to 2017. The data are placed in a DataFrame named <code class="docutils literal notranslate"><span class="pre">topmovies</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s1">&#39;top_movies_2017.csv&#39;</span><span class="p">)</span>
+<span class="n">topmovies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+      <td>198676459</td>
+      <td>1796176700</td>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+      <td>103290500</td>
+      <td>341357800</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+      <td>330360194</td>
+      <td>340137000</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+      <td>158348367</td>
+      <td>340028200</td>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+      <td>325100054</td>
+      <td>339411900</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+      <td>156452370</td>
+      <td>338409100</td>
+      <td>1988</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>We will use this DataFrame to demonstrate some useful methods. We will then develop other methods useful in DataScience on the same DataFrame.</p>
+<h2>The Shape of the DataFrame</h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute returns a tuple representing the dimensions of the DataFrame: (number of rows, number of columns).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_columns</span> <span class="o">=</span> <span class="n">topmovies</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The Top Movies Dataset has </span><span class="si">{</span><span class="n">num_rows</span><span class="si">}</span><span class="s1"> rows and </span><span class="si">{</span><span class="n">num_columns</span><span class="si">}</span><span class="s1"> columns.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Top Movies Dataset has 200 rows and 5 columns.
+</pre></div>
+</div>
+</div>
+</div>
+<h2>Column Labels</h2>
+<p>The attribute <code class="docutils literal notranslate"><span class="pre">columns</span></code> can be used to list the labels of all the columns. With <code class="docutils literal notranslate"><span class="pre">topmovies</span></code> we don’t gain much by this, but it can be very useful for DataFrames that are so large that not all columns are visible on the screen.</p>
+<p><strong>Note:</strong> The columns attribute of a DataFrame in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> returns an Index object, which is an immutable array implementing an ordered, sliceable set. You can explicitly convert it to a list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">topmovies</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Title&#39;, &#39;Studio&#39;, &#39;Gross&#39;, &#39;Gross (Adjusted)&#39;, &#39;Year&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change column labels using the <code class="docutils literal notranslate"><span class="pre">rename</span></code> method. This creates a new table and leaves <code class="docutils literal notranslate"><span class="pre">topmovies</span></code> unchanged if we don’t specify the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> to be true.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Year&#39;</span><span class="p">:</span> <span class="s1">&#39;Release Year&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">topmovies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Release Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+      <td>198676459</td>
+      <td>1796176700</td>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+      <td>103290500</td>
+      <td>341357800</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+      <td>330360194</td>
+      <td>340137000</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+      <td>158348367</td>
+      <td>340028200</td>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+      <td>325100054</td>
+      <td>339411900</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+      <td>156452370</td>
+      <td>338409100</td>
+      <td>1988</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 5 columns</p>
+</div></div></div>
+</div>
+<h2>Accessing the Data in a DataFrame</h2>
+<p>We often want to access certain subsets of a DataFrame. We can do this using rows, columns, or both. The <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> are two DataFrame slicing attributes which are used for this purpose.</p>
+<h3> loc </h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> attribute is used to access rows and columns by their label. <code class="docutils literal notranslate"><span class="pre">loc</span></code> slicing is right-inclusive. Let’s take the first 10 movies and their studios from <code class="docutils literal notranslate"><span class="pre">topmovies</span></code> dataframe.</p>
+<p><strong>Note:</strong> Remember that the index is also called the row labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Title&#39;</span><span class="p">:</span><span class="s1">&#39;Studio&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Ten Commandments</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Jaws</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Doctor Zhivago</td>
+      <td>MGM</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The Exorcist</td>
+      <td>Warner Brothers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Snow White and the Seven Dwarves</td>
+      <td>Disney</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To access all the rows for some specific column we use [[ ]] operator as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[[</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="s1">&#39;Studio&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>If we want to access only one column, we can use the [] operator instead of the [[]] operator. The [‘column_name’] will return a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> Series which can be converted to DataFrame by using the <code class="docutils literal notranslate"><span class="pre">to_frame()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>The 5 columns are indexed 0, 1, 2, 3, and 4. The column <code class="docutils literal notranslate"><span class="pre">Survivors</span></code> can also be accessed by using its column index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([145000, 140000, 127100, 100000,  55000,  24000,  20000,  12000])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The 8 items in the array are indexed 0, 1, 2, and so on, up to 7. The items in the column can be accessed using <code class="docutils literal notranslate"><span class="pre">item</span></code>, as with any array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>145000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24000
+</pre></div>
+</div>
+</div>
+</div>
+<h2>Working with the Data in a Column</h2>
+<p>Because columns are arrays, we can use array operations on them to discover new information. For example, we can create a new column that contains the percent of all survivors at each city after Smolensk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial</span> <span class="o">=</span> <span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;Survivors&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">minard</span> <span class="o">=</span> <span class="n">minard</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="s1">&#39;Percent Surviving&#39;</span><span class="p">,</span> <span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;Survivors&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">initial</span>
+<span class="p">)</span>
+<span class="n">minard</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Longitude</th> <th>Latitude</th> <th>City Name</th> <th>Direction</th> <th>Survivors</th> <th>Percent Surviving</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>32       </td> <td>54.8    </td> <td>Smolensk   </td> <td>Advance  </td> <td>145000   </td> <td>1                </td>
+        </tr>
+        <tr>
+            <td>33.2     </td> <td>54.9    </td> <td>Dorogobouge</td> <td>Advance  </td> <td>140000   </td> <td>0.965517         </td>
+        </tr>
+        <tr>
+            <td>34.4     </td> <td>55.5    </td> <td>Chjat      </td> <td>Advance  </td> <td>127100   </td> <td>0.876552         </td>
+        </tr>
+        <tr>
+            <td>37.6     </td> <td>55.8    </td> <td>Moscou     </td> <td>Advance  </td> <td>100000   </td> <td>0.689655         </td>
+        </tr>
+        <tr>
+            <td>34.3     </td> <td>55.2    </td> <td>Wixma      </td> <td>Retreat  </td> <td>55000    </td> <td>0.37931          </td>
+        </tr>
+        <tr>
+            <td>32       </td> <td>54.6    </td> <td>Smolensk   </td> <td>Retreat  </td> <td>24000    </td> <td>0.165517         </td>
+        </tr>
+        <tr>
+            <td>30.4     </td> <td>54.4    </td> <td>Orscha     </td> <td>Retreat  </td> <td>20000    </td> <td>0.137931         </td>
+        </tr>
+        <tr>
+            <td>26.8     </td> <td>54.3    </td> <td>Moiodexno  </td> <td>Retreat  </td> <td>12000    </td> <td>0.0827586        </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>To make the proportions in the new columns appear as percents, we can use the method <code class="docutils literal notranslate"><span class="pre">set_format</span></code> with the option <code class="docutils literal notranslate"><span class="pre">PercentFormatter</span></code>. The <code class="docutils literal notranslate"><span class="pre">set_format</span></code> method takes <code class="docutils literal notranslate"><span class="pre">Formatter</span></code> objects, which exist for dates (<code class="docutils literal notranslate"><span class="pre">DateFormatter</span></code>), currencies (<code class="docutils literal notranslate"><span class="pre">CurrencyFormatter</span></code>), numbers, and percentages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">set_format</span><span class="p">(</span><span class="s1">&#39;Percent Surviving&#39;</span><span class="p">,</span> <span class="n">PercentFormatter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Longitude</th> <th>Latitude</th> <th>City Name</th> <th>Direction</th> <th>Survivors</th> <th>Percent Surviving</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>32       </td> <td>54.8    </td> <td>Smolensk   </td> <td>Advance  </td> <td>145000   </td> <td>100.00%          </td>
+        </tr>
+        <tr>
+            <td>33.2     </td> <td>54.9    </td> <td>Dorogobouge</td> <td>Advance  </td> <td>140000   </td> <td>96.55%           </td>
+        </tr>
+        <tr>
+            <td>34.4     </td> <td>55.5    </td> <td>Chjat      </td> <td>Advance  </td> <td>127100   </td> <td>87.66%           </td>
+        </tr>
+        <tr>
+            <td>37.6     </td> <td>55.8    </td> <td>Moscou     </td> <td>Advance  </td> <td>100000   </td> <td>68.97%           </td>
+        </tr>
+        <tr>
+            <td>34.3     </td> <td>55.2    </td> <td>Wixma      </td> <td>Retreat  </td> <td>55000    </td> <td>37.93%           </td>
+        </tr>
+        <tr>
+            <td>32       </td> <td>54.6    </td> <td>Smolensk   </td> <td>Retreat  </td> <td>24000    </td> <td>16.55%           </td>
+        </tr>
+        <tr>
+            <td>30.4     </td> <td>54.4    </td> <td>Orscha     </td> <td>Retreat  </td> <td>20000    </td> <td>13.79%           </td>
+        </tr>
+        <tr>
+            <td>26.8     </td> <td>54.3    </td> <td>Moiodexno  </td> <td>Retreat  </td> <td>12000    </td> <td>8.28%            </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<h2>Choosing Sets of Columns</h2>
+<p>The method <code class="docutils literal notranslate"><span class="pre">select</span></code> creates a new table that contains only the specified columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Longitude</th> <th>Latitude</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>32       </td> <td>54.8    </td>
+        </tr>
+        <tr>
+            <td>33.2     </td> <td>54.9    </td>
+        </tr>
+        <tr>
+            <td>34.4     </td> <td>55.5    </td>
+        </tr>
+        <tr>
+            <td>37.6     </td> <td>55.8    </td>
+        </tr>
+        <tr>
+            <td>34.3     </td> <td>55.2    </td>
+        </tr>
+        <tr>
+            <td>32       </td> <td>54.6    </td>
+        </tr>
+        <tr>
+            <td>30.4     </td> <td>54.4    </td>
+        </tr>
+        <tr>
+            <td>26.8     </td> <td>54.3    </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>The same selection can be made using column indices instead of labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Longitude</th> <th>Latitude</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>32       </td> <td>54.8    </td>
+        </tr>
+        <tr>
+            <td>33.2     </td> <td>54.9    </td>
+        </tr>
+        <tr>
+            <td>34.4     </td> <td>55.5    </td>
+        </tr>
+        <tr>
+            <td>37.6     </td> <td>55.8    </td>
+        </tr>
+        <tr>
+            <td>34.3     </td> <td>55.2    </td>
+        </tr>
+        <tr>
+            <td>32       </td> <td>54.6    </td>
+        </tr>
+        <tr>
+            <td>30.4     </td> <td>54.4    </td>
+        </tr>
+        <tr>
+            <td>26.8     </td> <td>54.3    </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>The result of using <code class="docutils literal notranslate"><span class="pre">select</span></code> is a new table, even when you select just one column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;Survivors&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Survivors</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>145000   </td>
+        </tr>
+        <tr>
+            <td>140000   </td>
+        </tr>
+        <tr>
+            <td>127100   </td>
+        </tr>
+        <tr>
+            <td>100000   </td>
+        </tr>
+        <tr>
+            <td>55000    </td>
+        </tr>
+        <tr>
+            <td>24000    </td>
+        </tr>
+        <tr>
+            <td>20000    </td>
+        </tr>
+        <tr>
+            <td>12000    </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Notice that the result is a table, unlike the result of <code class="docutils literal notranslate"><span class="pre">column</span></code>, which is an array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;Survivors&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([145000, 140000, 127100, 100000,  55000,  24000,  20000,  12000])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to create a new table consisting of a set of columns is to <code class="docutils literal notranslate"><span class="pre">drop</span></code> the columns you don’t want.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;Direction&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>City Name</th> <th>Survivors</th> <th>Percent Surviving</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Smolensk   </td> <td>145000   </td> <td>100.00%          </td>
+        </tr>
+        <tr>
+            <td>Dorogobouge</td> <td>140000   </td> <td>96.55%           </td>
+        </tr>
+        <tr>
+            <td>Chjat      </td> <td>127100   </td> <td>87.66%           </td>
+        </tr>
+        <tr>
+            <td>Moscou     </td> <td>100000   </td> <td>68.97%           </td>
+        </tr>
+        <tr>
+            <td>Wixma      </td> <td>55000    </td> <td>37.93%           </td>
+        </tr>
+        <tr>
+            <td>Smolensk   </td> <td>24000    </td> <td>16.55%           </td>
+        </tr>
+        <tr>
+            <td>Orscha     </td> <td>20000    </td> <td>13.79%           </td>
+        </tr>
+        <tr>
+            <td>Moiodexno  </td> <td>12000    </td> <td>8.28%            </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Neither <code class="docutils literal notranslate"><span class="pre">select</span></code> nor <code class="docutils literal notranslate"><span class="pre">drop</span></code> change the original table. Instead, they create new smaller tables that share the same data. The fact that the original table is preserved is useful! You can generate multiple different tables that only consider certain columns without worrying that one analysis will affect the other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minard</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+    <thead>
+        <tr>
+            <th>Longitude</th> <th>Latitude</th> <th>City Name</th> <th>Direction</th> <th>Survivors</th> <th>Percent Surviving</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>32       </td> <td>54.8    </td> <td>Smolensk   </td> <td>Advance  </td> <td>145000   </td> <td>100.00%          </td>
+        </tr>
+        <tr>
+            <td>33.2     </td> <td>54.9    </td> <td>Dorogobouge</td> <td>Advance  </td> <td>140000   </td> <td>96.55%           </td>
+        </tr>
+        <tr>
+            <td>34.4     </td> <td>55.5    </td> <td>Chjat      </td> <td>Advance  </td> <td>127100   </td> <td>87.66%           </td>
+        </tr>
+        <tr>
+            <td>37.6     </td> <td>55.8    </td> <td>Moscou     </td> <td>Advance  </td> <td>100000   </td> <td>68.97%           </td>
+        </tr>
+        <tr>
+            <td>34.3     </td> <td>55.2    </td> <td>Wixma      </td> <td>Retreat  </td> <td>55000    </td> <td>37.93%           </td>
+        </tr>
+        <tr>
+            <td>32       </td> <td>54.6    </td> <td>Smolensk   </td> <td>Retreat  </td> <td>24000    </td> <td>16.55%           </td>
+        </tr>
+        <tr>
+            <td>30.4     </td> <td>54.4    </td> <td>Orscha     </td> <td>Retreat  </td> <td>20000    </td> <td>13.79%           </td>
+        </tr>
+        <tr>
+            <td>26.8     </td> <td>54.3    </td> <td>Moiodexno  </td> <td>Retreat  </td> <td>12000    </td> <td>8.28%            </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>All of the methods that we have used above can be applied to any table.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/03/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rejwana Haque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
