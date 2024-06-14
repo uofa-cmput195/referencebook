@@ -1,0 +1,1480 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.1. Selecting and &#8212; Introduction to Principles and Techniques of Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-148221575-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/1/Index-Slice-Sort';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/1/Index-Slice-Sort.html" />
+    <link rel="icon" href="../../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="3. Working with Tabular Data" href="../Tables.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/2/why-data-science.html">1.2. Why Data Science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/6/Summary-1.html">1.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/causality-and-experiments.html">2. Causality and Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/3/establishing-causality.html">2.3. Establishing Causality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/4/randomization.html">2.4. Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Selecting and Sorting</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/uofa-cmput195/referencebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/03/1/Index-Slice-Sort.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Selecting and</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="selecting-and">
+<h1><span class="section-number">3.1. </span>Selecting and<a class="headerlink" href="#selecting-and" title="Link to this heading">#</a></h1>
+<h1>Getting Started</h1>
+<p>In each section of this chapter, we will work with the Top Movies dataset we introduced earlier. We will pose a question, break the question down into high-level steps, and then translate each step into Python code using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrames.</p>
+<h1>Selecting and Sorting</h1>
+<p>Let’s use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to answer the following question:</p>
+<p>What were the five highest Gross movies in 2016?</p>
+<h2>Breaking the Problem Down</h2>
+<p>We can decompose this question into the following simpler table manipulations:</p>
+<ol class="arabic simple">
+<li><p>Chose set of relevant columns (i.e. ‘Title’, ‘Year’ and ‘Gross’).</p></li>
+<li><p>Slice out the rows for the year 2016.</p></li>
+<li><p>Sort the rows in descending order by Gross.</p></li>
+<li><p>Select the first five rows from the sorted DataFrame.</p></li>
+</ol>
+<p>Now, we can express these steps in pandas.</p>
+<h2>Selecting</h2>
+<p>All the tasks (except task 3) in our broken-down problems involve selecting a subset of data from the DataFrame. Therefore, we will start discussing the selection first to approach the first two tasks.</p>
+<h3> Slicing using `.loc` </h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> attribute is used to access rows and columns by their label.
+To select subsets of a DataFrame, we use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> slicing syntax. The first argument is the label of the row and the second is the label of the column.</p>
+<p><strong>Note:</strong> Remember that the index is also called the row labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+      <td>198676459</td>
+      <td>1796176700</td>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+      <td>103290500</td>
+      <td>341357800</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+      <td>330360194</td>
+      <td>340137000</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+      <td>158348367</td>
+      <td>340028200</td>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+      <td>325100054</td>
+      <td>339411900</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+      <td>156452370</td>
+      <td>338409100</td>
+      <td>1988</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Star Wars&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To slice out multiple rows or columns, we can use :. Note that <code class="docutils literal notranslate"><span class="pre">.loc</span></code> slicing is inclusive, unlike Python’s slicing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Title&#39;</span><span class="p">:</span><span class="s1">&#39;Studio&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Ten Commandments</td>
+      <td>Paramount</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Jaws</td>
+      <td>Universal</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Doctor Zhivago</td>
+      <td>MGM</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>The Exorcist</td>
+      <td>Warner Brothers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Snow White and the Seven Dwarves</td>
+      <td>Disney</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h3> Selecting Column(s)</h3>
+<p>We use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> slicing to chose a set of columns form a DataFrame.</p>
+<p>We will often want a single column from a DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Gross&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      1939
+1      1977
+2      1965
+3      1982
+4      1997
+       ... 
+195    1980
+196    2016
+197    1993
+198    2016
+199    1988
+Name: Year, Length: 200, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that when we select a single column, we get a pandas Series. A Series is like a one-dimensional NumPy array since we can perform arithmetic on all the elements at once. For example, we can calculate ‘Gross in Millions’ from the gross. You can also assign it to a new column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Gross in Millions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Gross&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000000</span>
+<span class="n">topmovies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+      <th>Gross in Millions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+      <td>198676459</td>
+      <td>1796176700</td>
+      <td>1939</td>
+      <td>198.676459</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+      <td>460.998007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+      <td>158.671368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+      <td>435.110554</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+      <td>658.672302</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+      <td>103290500</td>
+      <td>341357800</td>
+      <td>1980</td>
+      <td>103.290500</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+      <td>330360194</td>
+      <td>340137000</td>
+      <td>2016</td>
+      <td>330.360194</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+      <td>158348367</td>
+      <td>340028200</td>
+      <td>1993</td>
+      <td>158.348367</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+      <td>325100054</td>
+      <td>339411900</td>
+      <td>2016</td>
+      <td>325.100054</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+      <td>156452370</td>
+      <td>338409100</td>
+      <td>1988</td>
+      <td>156.452370</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>To convert it to a DataFeame you can use <code class="docutils literal notranslate"><span class="pre">to_frame()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1997</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>1988</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>To select out specific columns, we can pass a list into the .loc slice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>1997</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>1993</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>2016</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>1988</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>Selecting columns is common, so there’s a shorthand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                      Gone with the Wind
+1                               Star Wars
+2                      The Sound of Music
+3             E.T.: The Extra-Terrestrial
+4                                 Titanic
+                      ...                
+195                                9 to 5
+196    Batman v Superman: Dawn of Justice
+197                              The Firm
+198                         Suicide Squad
+199               Who Framed Roger Rabbit
+Name: Title, Length: 200, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span> <span class="o">=</span> <span class="n">topmovies</span><span class="p">[[</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Gross&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3> Slecting Rows </h3>
+<p>Often you may want to select rows eighter specified rows or rows that correspond to entries with a particular feature. For example, movies released in the year 2016. Or you might want to take the first five movies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">select</span> <span class="n">specified</span> <span class="n">rows</span> <span class="n">whose</span> <span class="n">indices</span> <span class="n">are</span> <span class="n">known</span> <span class="n">beforehead</span> <span class="n">we</span> <span class="n">can</span> <span class="err">`</span><span class="n">loc</span><span class="err">`</span> <span class="n">slicing</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+      <th>Gross in Millions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+      <td>460.998007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+      <td>158.671368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+      <td>435.110554</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+      <td>658.672302</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Ten Commandments</td>
+      <td>Paramount</td>
+      <td>65500000</td>
+      <td>1164590000</td>
+      <td>1956</td>
+      <td>65.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h3>Filtering Rows</h3>
+To select rows that satisfy certain conditions we can slice the dataframe with the condition. To slice out the rows with year 2016, we will first create a Series containing True for each row we want to keep and False for each row we want to drop. This is simple because math and boolean operators on Series are applied to each element in the Series.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      1939
+1      1977
+2      1965
+3      1982
+4      1997
+       ... 
+195    1980
+196    2016
+197    1993
+198    2016
+199    1988
+Name: Year, Length: 200, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      False
+1      False
+2      False
+3      False
+4      False
+       ...  
+195    False
+196     True
+197    False
+198     True
+199    False
+Name: Year, Length: 200, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we have this Series of True and False, we can pass it into <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies2016</span> <span class="o">=</span> <span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2016</span><span class="p">]</span>
+<span class="n">topmovies2016</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>Rogue One: A Star Wars Story</td>
+      <td>2016</td>
+      <td>532177324</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Finding Dory</td>
+      <td>2016</td>
+      <td>486295561</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>408084349</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>The Secret Life of Pets</td>
+      <td>2016</td>
+      <td>368384330</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Deadpool</td>
+      <td>2016</td>
+      <td>363070709</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>The Jungle Book (2016)</td>
+      <td>2016</td>
+      <td>364001123</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Zootopia</td>
+      <td>2016</td>
+      <td>341268248</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>2016</td>
+      <td>330360194</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>2016</td>
+      <td>325100054</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h2>Sorting Rows</h2>
+<p>The next step is to sort the rows in descending order by ‘Gross’. We can use the <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_2016</span> <span class="o">=</span> <span class="n">topmovies2016</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Gross&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sorted_2016</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>Rogue One: A Star Wars Story</td>
+      <td>2016</td>
+      <td>532177324</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Finding Dory</td>
+      <td>2016</td>
+      <td>486295561</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>408084349</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>The Secret Life of Pets</td>
+      <td>2016</td>
+      <td>368384330</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>The Jungle Book (2016)</td>
+      <td>2016</td>
+      <td>364001123</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Deadpool</td>
+      <td>2016</td>
+      <td>363070709</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Zootopia</td>
+      <td>2016</td>
+      <td>341268248</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>2016</td>
+      <td>330360194</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>2016</td>
+      <td>325100054</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h2>Selecting Top 5 Rows</h2>
+<p>Now we can use <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> slicing to select the first 5 rows as the highest gross-making movies in 2016.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_2016</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>Rogue One: A Star Wars Story</td>
+      <td>2016</td>
+      <td>532177324</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Finding Dory</td>
+      <td>2016</td>
+      <td>486295561</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Captain America: Civil War</td>
+      <td>2016</td>
+      <td>408084349</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>The Secret Life of Pets</td>
+      <td>2016</td>
+      <td>368384330</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>The Jungle Book (2016)</td>
+      <td>2016</td>
+      <td>364001123</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that, both <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are used for slicing. While <code class="docutils literal notranslate"><span class="pre">loc</span></code> takes row and column labels, <code class="docutils literal notranslate"><span class="pre">iloc</span></code> lakes integer indexes to represent rows and columns. Another difference is that <code class="docutils literal notranslate"><span class="pre">loc</span></code> is right-inclusive while <code class="docutils literal notranslate"><span class="pre">iloc</span></code> is right-exclusive.</p>
+<h1>Conclusion</h1>
+In this section, we answered a data science question from tabular data using `pandas` slicing and sorting. First we broke down our question into doable smaller subproblems and then we solved each smaller subproblems using Python programming to get the answer to our main question.</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/03/1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Working with Tabular Data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rejwana Haque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
