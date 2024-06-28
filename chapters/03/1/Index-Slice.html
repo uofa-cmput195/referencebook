@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Getting Started &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>3.1. Selecting and Sorting &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -75,6 +75,8 @@
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. Classifying by One Variable" href="../2/Classifying_by_One_Variable.html" />
+    <link rel="prev" title="3. Working with Tabular Data" href="../Tables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,8 +138,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,7 +183,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
@@ -205,8 +205,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Index-Slice-Sort.html">3.1. Indexing, Selecting and Sorting</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Selecting and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 </ul>
 </li>
 </ul>
@@ -360,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting Started</h1>
+    <h1>Selecting and Sorting</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,21 +377,24 @@ document.write(`
                   
   <div class="cell tag_remove-input docutils container">
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="selecting-and-sorting">
+<h1><span class="section-number">3.1. </span>Selecting and Sorting<a class="headerlink" href="#selecting-and-sorting" title="Link to this heading">#</a></h1>
+<h1>Getting Started</h1>
 <p>In each section of this chapter, we will work with the Top Movies dataset we introduced earlier. We will pose a question, break the question down into high-level steps, and then translate each step into Python code using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrames.</p>
-<h2>Indexes, Slicing and Sorting</h2>
+<h1>Answering a Question</h1>
 <p>Let’s use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to answer the following question:</p>
 <p>What were the five highest Gross movies in 2016?</p>
-<h3>Breaking the Problem Down</h3>
+<h2>Breaking the Problem Down</h2>
 <p>We can decompose this question into the following simpler table manipulations:</p>
 <ol class="arabic simple">
 <li><p>Chose set of relevant columns (i.e. ‘Title’, ‘Year’ and ‘Gross’).</p></li>
 <li><p>Slice out the rows for the year 2016.</p></li>
 <li><p>Sort the rows in descending order by Gross.</p></li>
-<li><p>Select the first five rows from the sorted DataFrame.
-Now, we can express these steps in pandas.</p></li>
+<li><p>Select the first five rows from the sorted DataFrame.</p></li>
 </ol>
+<p>Now, we can express these steps in pandas.</p>
+<h2>Selecting</h2>
+<p>All the tasks (except task 3) in our broken-down problems involve selecting a subset of data from the DataFrame. Therefore, we will start discussing the selection first to approach the first two tasks.</p>
 <h3> Slicing using `.loc` </h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> attribute is used to access rows and columns by their label.
 To select subsets of a DataFrame, we use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> slicing syntax. The first argument is the label of the row and the second is the label of the column.</p>
@@ -618,10 +622,12 @@ To select subsets of a DataFrame, we use the <code class="docutils literal notra
 </table>
 </div></div></div>
 </div>
+<h3> Selecting Column(s)</h3>
+<p>We use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> slicing to chose a set of columns form a DataFrame.</p>
 <p>We will often want a single column from a DataFrame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Gross&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -642,29 +648,145 @@ Name: Year, Length: 200, dtype: int64
 </div>
 </div>
 </div>
-<p>Note that when we select a single column, we get a pandas Series. A Series is like a one-dimensional NumPy array since we can perform arithmetic on all the elements at once.</p>
+<p>Note that when we select a single column, we get a pandas Series. A Series is like a one-dimensional NumPy array since we can perform arithmetic on all the elements at once. For example, we can calculate ‘Gross in Millions’ from the gross. You can also assign it to a new column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Gross in Millions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Gross&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000000</span>
+<span class="n">topmovies</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      1941
-1      1979
-2      1967
-3      1984
-4      1999
-       ... 
-195    1982
-196    2018
-197    1995
-198    2018
-199    1990
-Name: Year, Length: 200, dtype: int64
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+      <th>Gross in Millions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gone with the Wind</td>
+      <td>MGM</td>
+      <td>198676459</td>
+      <td>1796176700</td>
+      <td>1939</td>
+      <td>198.676459</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+      <td>460.998007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+      <td>158.671368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+      <td>435.110554</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+      <td>658.672302</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>9 to 5</td>
+      <td>Fox</td>
+      <td>103290500</td>
+      <td>341357800</td>
+      <td>1980</td>
+      <td>103.290500</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Batman v Superman: Dawn of Justice</td>
+      <td>Warner Brothers</td>
+      <td>330360194</td>
+      <td>340137000</td>
+      <td>2016</td>
+      <td>330.360194</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>The Firm</td>
+      <td>Paramount</td>
+      <td>158348367</td>
+      <td>340028200</td>
+      <td>1993</td>
+      <td>158.348367</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Suicide Squad</td>
+      <td>Warner Brothers</td>
+      <td>325100054</td>
+      <td>339411900</td>
+      <td>2016</td>
+      <td>325.100054</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Who Framed Roger Rabbit</td>
+      <td>Buena Vista</td>
+      <td>156452370</td>
+      <td>338409100</td>
+      <td>1988</td>
+      <td>156.452370</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 6 columns</p>
+</div></div></div>
 </div>
 <p>To convert it to a DataFeame you can use <code class="docutils literal notranslate"><span class="pre">to_frame()</span></code> method.</p>
 <div class="cell docutils container">
@@ -868,8 +990,99 @@ Name: Title, Length: 200, dtype: object
 </div>
 </div>
 <h3> Slecting Rows </h3>
-<p>To select rows that satisfy certain conditions we can slice the dataframe using predicates. To slice out the rows with year 2016, we will first create a Series containing True for each row we want to keep and False for each row we want to drop. This is simple because math and boolean operators on Series are applied to each element in the Series.</p>
+<p>Often you may want to select rows eighter specified rows or rows that correspond to entries with a particular feature. For example, movies released in the year 2016. Or you might want to take the first five movies.</p>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">select</span> <span class="n">specified</span> <span class="n">rows</span> <span class="n">whose</span> <span class="n">indices</span> <span class="n">are</span> <span class="n">known</span> <span class="n">beforehead</span> <span class="n">we</span> <span class="n">can</span> <span class="err">`</span><span class="n">loc</span><span class="err">`</span> <span class="n">slicing</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Studio</th>
+      <th>Gross</th>
+      <th>Gross (Adjusted)</th>
+      <th>Year</th>
+      <th>Gross in Millions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Star Wars</td>
+      <td>Fox</td>
+      <td>460998007</td>
+      <td>1583483200</td>
+      <td>1977</td>
+      <td>460.998007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The Sound of Music</td>
+      <td>Fox</td>
+      <td>158671368</td>
+      <td>1266072700</td>
+      <td>1965</td>
+      <td>158.671368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E.T.: The Extra-Terrestrial</td>
+      <td>Universal</td>
+      <td>435110554</td>
+      <td>1261085000</td>
+      <td>1982</td>
+      <td>435.110554</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Titanic</td>
+      <td>Paramount</td>
+      <td>658672302</td>
+      <td>1204368000</td>
+      <td>1997</td>
+      <td>658.672302</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>The Ten Commandments</td>
+      <td>Paramount</td>
+      <td>65500000</td>
+      <td>1164590000</td>
+      <td>1956</td>
+      <td>65.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<h3>Filtering Rows</h3>
+To select rows that satisfy certain conditions we can slice the dataframe with the condition. To slice out the rows with year 2016, we will first create a Series containing True for each row we want to keep and False for each row we want to drop. This is simple because math and boolean operators on Series are applied to each element in the Series.<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topmovies</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1006,7 +1219,7 @@ Name: Year, Length: 200, dtype: bool
 </table>
 </div></div></div>
 </div>
-<h3>Sorting Rows</h3>
+<h2>Sorting Rows</h2>
 <p>The next step is to sort the rows in descending order by ‘Gross’. We can use the <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1098,7 +1311,7 @@ Name: Year, Length: 200, dtype: bool
 </table>
 </div></div></div>
 </div>
-<h3>Selecting Top 5 Rows</h3>
+<h2>Selecting Top 5 Rows</h2>
 <p>Now we can use <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> slicing to select the first 5 rows as the highest gross-making movies in 2016.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1166,8 +1379,8 @@ Name: Year, Length: 200, dtype: bool
 </div></div></div>
 </div>
 <p>Note that, both <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are used for slicing. While <code class="docutils literal notranslate"><span class="pre">loc</span></code> takes row and column labels, <code class="docutils literal notranslate"><span class="pre">iloc</span></code> lakes integer indexes to represent rows and columns. Another difference is that <code class="docutils literal notranslate"><span class="pre">loc</span></code> is right-inclusive while <code class="docutils literal notranslate"><span class="pre">iloc</span></code> is right-exclusive.</p>
-<h2>Conclusion</h2>
-In this section we answered a data science question from tabular data using `pandas` slicing and sorting. First we brock down our question into doable smaller subproblems and then we solved each smaller subproblems using Python programming to get the answer to our main question.</section>
+<h1>Conclusion</h1>
+In this section, we answered a data science question from tabular data using `pandas` slicing and sorting. First we broke down our question into doable smaller subproblems and then we solved each smaller subproblems using Python programming to get the answer to our main question.</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1199,6 +1412,24 @@ In this section we answered a data science question from tabular data using `pan
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Tables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Working with Tabular Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2/Classifying_by_One_Variable.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Classifying by One Variable</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
