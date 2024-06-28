@@ -40,5 +40,7 @@ sections:
 - file: chapters/03/Tables
   title: Working with Tabular Data
   sections:
-  - file: chapters/03/1/Index-Slice-Sort
+  - file: chapters/03/1/Index-Slice
     title: Selecting and Sorting
+  - file: chapters/03/2/Classifying_by_One_Variable
+    title: Classifying by One Variable
