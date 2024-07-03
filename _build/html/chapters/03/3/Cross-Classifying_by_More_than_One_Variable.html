@@ -637,7 +637,7 @@ document.write(`
     <tr>
       <th rowspan="2" valign="top">chocolate</th>
       <th>dark brown</th>
-      <td>10.50</td>
+      <td>10.25</td>
     </tr>
     <tr>
       <th>light brown</th>
@@ -1168,7 +1168,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;Position&#39;</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">totals</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># displays the entire dataframe</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1202,18 @@ document.write(`
       <th>CHI</th>
       <th>COL</th>
       <th>DAL</th>
-      <th>...</th>
+      <th>DET</th>
+      <th>EDM</th>
+      <th>FLA</th>
+      <th>LAK</th>
+      <th>MIN</th>
+      <th>MTL</th>
+      <th>NJD</th>
+      <th>NSH</th>
+      <th>NYI</th>
+      <th>NYR</th>
+      <th>OTT</th>
+      <th>PHI</th>
       <th>PIT</th>
       <th>SEA</th>
       <th>SJS</th>
@@ -1215,6 +1227,17 @@ document.write(`
     </tr>
     <tr>
       <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1251,7 +1274,18 @@ document.write(`
       <td>18300000</td>
       <td>21850000</td>
       <td>24058334</td>
-      <td>...</td>
+      <td>26835000</td>
+      <td>44000000</td>
+      <td>30666667</td>
+      <td>27344167</td>
+      <td>13463333</td>
+      <td>21875000</td>
+      <td>20175000</td>
+      <td>20707412</td>
+      <td>39005000</td>
+      <td>24207500</td>
+      <td>30922500</td>
+      <td>28613333</td>
       <td>29125000</td>
       <td>11064166</td>
       <td>20204167</td>
@@ -1275,7 +1309,18 @@ document.write(`
       <td>22247500</td>
       <td>26800000</td>
       <td>25688333</td>
-      <td>...</td>
+      <td>25788333</td>
+      <td>27262500</td>
+      <td>21986667</td>
+      <td>26732500</td>
+      <td>22550000</td>
+      <td>13945832</td>
+      <td>23343333</td>
+      <td>30984000</td>
+      <td>25475000</td>
+      <td>27734500</td>
+      <td>22030000</td>
+      <td>27400000</td>
       <td>27725175</td>
       <td>26497500</td>
       <td>18625000</td>
@@ -1299,7 +1344,18 @@ document.write(`
       <td>4762500</td>
       <td>6175000</td>
       <td>5000000</td>
-      <td>...</td>
+      <td>7150000</td>
+      <td>3362500</td>
+      <td>11100000</td>
+      <td>3375000</td>
+      <td>7250000</td>
+      <td>12390000</td>
+      <td>6600000</td>
+      <td>7000000</td>
+      <td>6750000</td>
+      <td>6491667</td>
+      <td>6750000</td>
+      <td>859167</td>
       <td>6875000</td>
       <td>7100000</td>
       <td>6525000</td>
@@ -1323,7 +1379,18 @@ document.write(`
       <td>10000000</td>
       <td>17250000</td>
       <td>32450000</td>
-      <td>...</td>
+      <td>4750000</td>
+      <td>7875000</td>
+      <td>14110000</td>
+      <td>21825000</td>
+      <td>20018333</td>
+      <td>5300000</td>
+      <td>24538333</td>
+      <td>11000000</td>
+      <td>5300000</td>
+      <td>30175356</td>
+      <td>13940713</td>
+      <td>9375000</td>
       <td>7100000</td>
       <td>19134167</td>
       <td>6813333</td>
@@ -1347,7 +1414,18 @@ document.write(`
       <td>3158333</td>
       <td>16475000</td>
       <td>0</td>
-      <td>...</td>
+      <td>13550000</td>
+      <td>1550000</td>
+      <td>7500000</td>
+      <td>3069167</td>
+      <td>7700000</td>
+      <td>24025000</td>
+      <td>3138334</td>
+      <td>4757500</td>
+      <td>9262458</td>
+      <td>2900000</td>
+      <td>2950000</td>
+      <td>10600000</td>
       <td>10925000</td>
       <td>12350000</td>
       <td>11900000</td>
@@ -1361,14 +1439,14 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>5 rows × 32 columns</p>
 </div></div></div>
 </div>
 <p>Here you see the power of <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> over other cross-classification methods. Each column of sum is a distribution of the amount spent at a specific position. Converting the counts to percentages allows us to compare the 5 distributions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">percents</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">distributions</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span> 
+    <span class="n">display</span><span class="p">(</span><span class="n">distributions</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1401,7 +1479,18 @@ document.write(`
       <th>CHI</th>
       <th>COL</th>
       <th>DAL</th>
-      <th>...</th>
+      <th>DET</th>
+      <th>EDM</th>
+      <th>FLA</th>
+      <th>LAK</th>
+      <th>MIN</th>
+      <th>MTL</th>
+      <th>NJD</th>
+      <th>NSH</th>
+      <th>NYI</th>
+      <th>NYR</th>
+      <th>OTT</th>
+      <th>PHI</th>
       <th>PIT</th>
       <th>SEA</th>
       <th>SJS</th>
@@ -1415,6 +1504,17 @@ document.write(`
     </tr>
     <tr>
       <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1451,7 +1551,18 @@ document.write(`
       <td>31.30</td>
       <td>24.68</td>
       <td>27.59</td>
-      <td>...</td>
+      <td>34.37</td>
+      <td>52.35</td>
+      <td>35.92</td>
+      <td>33.21</td>
+      <td>18.97</td>
+      <td>28.21</td>
+      <td>25.93</td>
+      <td>27.81</td>
+      <td>45.46</td>
+      <td>26.45</td>
+      <td>40.37</td>
+      <td>37.23</td>
       <td>35.63</td>
       <td>14.53</td>
       <td>31.54</td>
@@ -1475,7 +1586,18 @@ document.write(`
       <td>38.05</td>
       <td>30.27</td>
       <td>29.46</td>
-      <td>...</td>
+      <td>33.03</td>
+      <td>32.44</td>
+      <td>25.76</td>
+      <td>32.46</td>
+      <td>31.77</td>
+      <td>17.99</td>
+      <td>30.01</td>
+      <td>41.62</td>
+      <td>29.69</td>
+      <td>30.31</td>
+      <td>28.76</td>
+      <td>35.66</td>
       <td>33.91</td>
       <td>34.80</td>
       <td>29.07</td>
@@ -1499,7 +1621,18 @@ document.write(`
       <td>8.15</td>
       <td>6.97</td>
       <td>5.73</td>
-      <td>...</td>
+      <td>9.16</td>
+      <td>4.00</td>
+      <td>13.00</td>
+      <td>4.10</td>
+      <td>10.21</td>
+      <td>15.98</td>
+      <td>8.48</td>
+      <td>9.40</td>
+      <td>7.87</td>
+      <td>7.09</td>
+      <td>8.81</td>
+      <td>1.12</td>
       <td>8.41</td>
       <td>9.32</td>
       <td>10.18</td>
@@ -1523,7 +1656,18 @@ document.write(`
       <td>17.10</td>
       <td>19.48</td>
       <td>37.21</td>
-      <td>...</td>
+      <td>6.08</td>
+      <td>9.37</td>
+      <td>16.53</td>
+      <td>26.50</td>
+      <td>28.20</td>
+      <td>6.84</td>
+      <td>31.54</td>
+      <td>14.78</td>
+      <td>6.18</td>
+      <td>32.98</td>
+      <td>18.20</td>
+      <td>12.20</td>
       <td>8.68</td>
       <td>25.13</td>
       <td>10.63</td>
@@ -1547,7 +1691,18 @@ document.write(`
       <td>5.40</td>
       <td>18.61</td>
       <td>0.00</td>
-      <td>...</td>
+      <td>17.36</td>
+      <td>1.84</td>
+      <td>8.79</td>
+      <td>3.73</td>
+      <td>10.85</td>
+      <td>30.99</td>
+      <td>4.03</td>
+      <td>6.39</td>
+      <td>10.80</td>
+      <td>3.17</td>
+      <td>3.85</td>
+      <td>13.79</td>
       <td>13.36</td>
       <td>16.22</td>
       <td>18.57</td>
@@ -1561,7 +1716,6 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>5 rows × 32 columns</p>
 </div></div></div>
 </div>
 <p>Let’s compare two finalists ‘FLA’ and ‘EDM’. At a glance, you can see that the Edmonton Oilers spent over 52% of its total budget on the Central position while the Florida Panthers spent below 36% on the central position making the expenditure more balanced among the positions.</p>
