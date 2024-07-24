@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.3. Cross-Classifying by More than One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>Cross-Classifying by More than One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -70,13 +70,11 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/3/Cross-Classifying_by_More_than_One_Variable';</script>
-    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/3/Cross-Classifying_by_More_than_One_Variable.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/3/Leo_Edit_Cross_Classifying';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/3/Leo_Edit_Cross_Classifying.html" />
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3.4. Applying a Function to a Column" href="../4/Applying_a_Function_to_a_Column.html" />
-    <link rel="prev" title="3.2. Classifying by One Variable" href="../2/Classifying_by_One_Variable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,6 +136,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,7 +183,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
@@ -205,10 +205,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Cross-Classifying by More than One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
 </ul>
 </li>
@@ -281,7 +281,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/03/3/Cross-Classifying_by_More_than_One_Variable.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/03/3/Leo_Edit_Cross_Classifying.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,10 +375,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">3.3.1. Two Variables: Counting the Number in Each Paired Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">3.3.2. Two Variables: Finding a Characteristic of Each Paired Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">3.3.3. Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">3.3.4. Example: NHL Salaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">Two Variables: Counting the Number in Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">Two Variables: Finding a Characteristic of Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
 </ul>
             </nav>
         </div>
@@ -390,14 +390,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell tag_remove-input docutils container">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../../assets/data/&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># import matplotlib.pyplot as plots</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+
+<span class="n">nhl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s1">&#39;nhl_salaries.csv&#39;</span><span class="p">)</span>
+<span class="n">nhl</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Rank&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+</div>
+<p><span style="color:green">Not a big deal, but I’ve always seen matplotlib.pyplot imported as plt. Could be good to use this so stackoverflow examples are more intuitive for the students. I added this above.</span></p>
 <section class="tex2jax_ignore mathjax_ignore" id="cross-classifying-by-more-than-one-variable">
-<h1><span class="section-number">3.3. </span>Cross-Classifying by More than One Variable<a class="headerlink" href="#cross-classifying-by-more-than-one-variable" title="Link to this heading">#</a></h1>
+<h1>Cross-Classifying by More than One Variable<a class="headerlink" href="#cross-classifying-by-more-than-one-variable" title="Link to this heading">#</a></h1>
 <p>When individuals have multiple features, there are many different ways to classify them. For example, if we have a population of college students for each of whom we have recorded a major and the number of years in college, then the students could be classified by major, or by year, or by a combination of major and year.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method also allows us to classify individuals according to multiple variables. This is called <em>cross-classifying</em>.</p>
 <section id="two-variables-counting-the-number-in-each-paired-category">
-<h2><span class="section-number">3.3.1. </span>Two Variables: Counting the Number in Each Paired Category<a class="headerlink" href="#two-variables-counting-the-number-in-each-paired-category" title="Link to this heading">#</a></h2>
+<h2>Two Variables: Counting the Number in Each Paired Category<a class="headerlink" href="#two-variables-counting-the-number-in-each-paired-category" title="Link to this heading">#</a></h2>
 <p>The dataframe <code class="docutils literal notranslate"><span class="pre">more_cones</span></code> records the flavor, color, and price of six ice cream cones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -594,7 +612,7 @@ document.write(`
 </div>
 </section>
 <section id="two-variables-finding-a-characteristic-of-each-paired-category">
-<h2><span class="section-number">3.3.2. </span>Two Variables: Finding a Characteristic of Each Paired Category<a class="headerlink" href="#two-variables-finding-a-characteristic-of-each-paired-category" title="Link to this heading">#</a></h2>
+<h2>Two Variables: Finding a Characteristic of Each Paired Category<a class="headerlink" href="#two-variables-finding-a-characteristic-of-each-paired-category" title="Link to this heading">#</a></h2>
 <p>The aggregation function aggregates all other columns that are not in the list of grouped columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +675,7 @@ document.write(`
 <p><strong>Three or More Variables.</strong> You can use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to classify rows by three or more categorical variables. Just include them all in the list that is the first argument. But cross-classifying by multiple variables can become complex, as the number of distinct combinations of categories can be quite large.</p>
 </section>
 <section id="pivot-tables-rearranging-the-output-of-group">
-<h2><span class="section-number">3.3.3. </span>Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code><a class="headerlink" href="#pivot-tables-rearranging-the-output-of-group" title="Link to this heading">#</a></h2>
+<h2>Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code><a class="headerlink" href="#pivot-tables-rearranging-the-output-of-group" title="Link to this heading">#</a></h2>
 <p>Many uses of cross-classification involve just two categorical variables, like <code class="docutils literal notranslate"><span class="pre">Flavor</span></code> and <code class="docutils literal notranslate"><span class="pre">Color</span></code> in the example above. In these cases it is possible to display the results of the classification in a different kind of table, called a <em>pivot table</em>. Pivot tables, also known as <em>contingency tables</em>, make it easier to work with data that have been classified according to two variables.</p>
 <p>Recall the use of <code class="docutils literal notranslate"><span class="pre">groupby</span></code> with aggregate function mean to calculate the average price of cones in each paired category of flavor and color:</p>
 <div class="cell docutils container">
@@ -793,7 +811,8 @@ document.write(`
 <p>An example will help clarify this. Here is <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> being used to find the total price of the cones in each cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leo: I re-formatted this so it doesn&#39;t get cut off in the browser format.</span>
+<span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">index</span> <span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> 
     <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> 
     <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;Price&#39;</span><span class="p">,</span> 
@@ -856,7 +875,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>And here is <code class="docutils literal notranslate"><span class="pre">groupby</span></code> doing the same thing.</p>
+<p>And here is <s><code class="docutils literal notranslate"><span class="pre">group</span></code></s> <span style="color:green">groupby</span> doing the same thing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span> <span class="nb">sum</span><span class="p">()</span>
@@ -918,7 +937,7 @@ document.write(`
 <p>Though the numbers in both tables are the same, table produced by <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> is easier to read and lends itself more easily to analysis. The advantage of <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> is that it places grouped values into adjacent columns, so that they can be combined and compared.</p>
 </section>
 <section id="example-nhl-salaries">
-<h2><span class="section-number">3.3.4. </span>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
+<h2>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
 <p>Let’s recall our NHL dataset one more time. Each player’s <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Team</span></code>, <code class="docutils literal notranslate"><span class="pre">Position</span></code> and <code class="docutils literal notranslate"><span class="pre">Salary</span></code> are recorded.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1729,6 +1748,70 @@ document.write(`
 <p>Let’s compare two finalists ‘FLA’ and ‘EDM’. At a glance, you can see that the Edmonton Oilers spent over 52% of its total budget on the Central position while the Florida Panthers spent below 36% on the central position making the expenditure more balanced among the positions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>EDM</th>
+      <th>FLA</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>52.35</td>
+      <td>35.92</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>32.44</td>
+      <td>25.76</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>4.00</td>
+      <td>13.00</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>9.37</td>
+      <td>16.53</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>1.84</td>
+      <td>8.79</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1737,7 +1820,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Position&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/0deecf66edb44a895dd428360ddb6569b3119d4c51add1db73c008dd40a625a6.png" src="../../../_images/0deecf66edb44a895dd428360ddb6569b3119d4c51add1db73c008dd40a625a6.png" />
+<img alt="../../../_images/d0c31ca360af2ee480fcda0ec0f9a66b9be84837151a7d7edc7167f4a8880a2d.png" src="../../../_images/d0c31ca360af2ee480fcda0ec0f9a66b9be84837151a7d7edc7167f4a8880a2d.png" />
 </div>
 </div>
 </section>
@@ -1773,24 +1856,6 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../2/Classifying_by_One_Variable.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Classifying by One Variable</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../4/Applying_a_Function_to_a_Column.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.4. </span>Applying a Function to a Column</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1807,10 +1872,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">3.3.1. Two Variables: Counting the Number in Each Paired Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">3.3.2. Two Variables: Finding a Characteristic of Each Paired Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">3.3.3. Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">3.3.4. Example: NHL Salaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">Two Variables: Counting the Number in Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">Two Variables: Finding a Characteristic of Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
 </ul>
   </nav></div>
 

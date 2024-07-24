@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.2. Classifying by One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>Classifying by One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -70,13 +70,11 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/2/Classifying_by_One_Variable';</script>
-    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/2/Classifying_by_One_Variable.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/2/Leo_Edit_Classifying_by_One_Variable';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/2/Leo_Edit_Classifying_by_One_Variable.html" />
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3.3. Cross-Classifying by More than One Variable" href="../3/Cross-Classifying_by_More_than_One_Variable.html" />
-    <link rel="prev" title="3.1. Selecting and Sorting" href="../1/Index-Slice.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,6 +136,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,7 +183,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
@@ -205,9 +205,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. Classifying by One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4/Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
 </ul>
@@ -281,7 +281,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/03/2/Classifying_by_One_Variable.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/03/2/Leo_Edit_Classifying_by_One_Variable.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,8 +375,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">3.2.1. Counting the Number in Each Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">3.2.2. Example: NHL Salaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">Counting the Number in Each Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
 </ul>
             </nav>
         </div>
@@ -391,14 +391,15 @@ document.write(`
   <div class="cell tag_remove-input docutils container">
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="classifying-by-one-variable">
-<h1><span class="section-number">3.2. </span>Classifying by One Variable<a class="headerlink" href="#classifying-by-one-variable" title="Link to this heading">#</a></h1>
+<h1>Classifying by One Variable<a class="headerlink" href="#classifying-by-one-variable" title="Link to this heading">#</a></h1>
 <p>Data scientists often need to classify individuals into groups according to shared features, and then identify some characteristics of the groups. For example, in the top movies dataset, it’s common to ask:</p>
-<p><strong>What was the total gross (earnings) in each year?</strong></p>
+<p><strong>What was the total gross <span style="color:green">(earnings)</span> in each year?</strong></p>
 <p>This type of question involves classifying individuals into categories that are not numerical. To classify individuals into categories we use <strong>grouping</strong>.</p>
 <section id="counting-the-number-in-each-category">
-<h2><span class="section-number">3.2.1. </span>Counting the Number in Each Category<a class="headerlink" href="#counting-the-number-in-each-category" title="Link to this heading">#</a></h2>
+<h2>Counting the Number in Each Category<a class="headerlink" href="#counting-the-number-in-each-category" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method with a single argument counts the number of rows for each category in a column. The result contains one row per unique value in the grouped column.</p>
 <p>Here is a small dataframe of data on ice cream cones. The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method can be used to list the distinct flavors and provide the counts of each flavor.</p>
+<p><span style="color:green">Not sure about this, but the University might prefer to use the canadian spelling “Flavour”. Although, American spelling is the standard in CS.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -469,15 +470,127 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x103a15eb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f163156e7b0&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> returns a strange-looking <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. It has split the data into separate groups. You can see the groups by applying the display function to this <code class="docutils literal notranslate"><span class="pre">gropupby</span></code> object. (If you are not familiar with <code class="docutils literal notranslate"><span class="pre">apply()</span></code> don’t worry we will cover it in detail later in this chapter.)</p>
+<p><span style="color:green">The .apply(display) below gives a DeprecationWarning. I placed a cell below that does the same thing without throwing the warning. Probably not a big deal, we could just silence the warning instead if we wanted to.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">display</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>chocolate</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chocolate</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chocolate</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>strawberry</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>strawberry</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_48074/1340326464.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  cones.groupby(&#39;Flavor&#39;).apply(display)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)[[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">display</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,7 +777,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>Though the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method grouped the dataframe, it won’t affect any non-grouping columns unless explicitly told to do so. So we need a function for aggregation. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> provides a range of aggregate functions including <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">count()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code>, and <code class="docutils literal notranslate"><span class="pre">min()</span></code>, necessary to perform effective data analysis. We can also call <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> on this object with an aggregation function in order to apply your own defined aggregation. We will limit ourselves to the built-in aggregations only.</p>
+<p>Though the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method grouped the dataframe, it won’t <s>do anything on your dataframe</s> <span style="color:green">affect any non-grouping columns</span> unless explicitly told to do so. So we need a function for aggregation. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> provides a range of aggregate functions including <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">count()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code>, and <code class="docutils literal notranslate"><span class="pre">min()</span></code>, necessary to perform effective data analysis. We can also call <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> on this object with an aggregation function in order to apply your own defined aggregation. We will limit ourselves to the built-in aggregations only.</p>
 <p>Let’s first count the number of rows in each category:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -758,10 +871,55 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p><strong>Note:</strong> Choosing the appropriate aggregate function crucial for data analysis, which often depends on the question and the datatype of the column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leo: I added an example of the as_index argument.</span>
+<span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>chocolate</td>
+      <td>16.55</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>strawberry</td>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Note:</strong> Choosing the appropriate aggregate function <span style="color:green">is </span>crucial for data analysis, which often depends on the question and the datatype of the column.</p>
 </section>
 <section id="example-nhl-salaries">
-<h2><span class="section-number">3.2.2. </span>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
+<h2>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
 <p>The dataframe <code class="docutils literal notranslate"><span class="pre">nhl</span></code> contains data on the 2023-2024 players in the National Hockey League. We will answer some datascience questions about this dataset using grouping.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -883,6 +1041,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">teams_and_money</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">]]</span>
 <span class="n">teams_and_money</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># This looks a little weird on the textbook when we show all rows, maybe head() could be better?</span>
+<span class="n">teams_and_money</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -932,114 +1093,6 @@ document.write(`
     <tr>
       <th>CAR</th>
       <td>95409417</td>
-    </tr>
-    <tr>
-      <th>CBJ</th>
-      <td>75754166</td>
-    </tr>
-    <tr>
-      <th>CGY</th>
-      <td>72827500</td>
-    </tr>
-    <tr>
-      <th>CHI</th>
-      <td>58468333</td>
-    </tr>
-    <tr>
-      <th>COL</th>
-      <td>88550000</td>
-    </tr>
-    <tr>
-      <th>DAL</th>
-      <td>87196667</td>
-    </tr>
-    <tr>
-      <th>DET</th>
-      <td>78073333</td>
-    </tr>
-    <tr>
-      <th>EDM</th>
-      <td>84050000</td>
-    </tr>
-    <tr>
-      <th>FLA</th>
-      <td>85363334</td>
-    </tr>
-    <tr>
-      <th>LAK</th>
-      <td>82345834</td>
-    </tr>
-    <tr>
-      <th>MIN</th>
-      <td>70981666</td>
-    </tr>
-    <tr>
-      <th>MTL</th>
-      <td>77535832</td>
-    </tr>
-    <tr>
-      <th>NJD</th>
-      <td>77795000</td>
-    </tr>
-    <tr>
-      <th>NSH</th>
-      <td>74448912</td>
-    </tr>
-    <tr>
-      <th>NYI</th>
-      <td>85792458</td>
-    </tr>
-    <tr>
-      <th>NYR</th>
-      <td>91509023</td>
-    </tr>
-    <tr>
-      <th>OTT</th>
-      <td>76593213</td>
-    </tr>
-    <tr>
-      <th>PHI</th>
-      <td>76847500</td>
-    </tr>
-    <tr>
-      <th>PIT</th>
-      <td>81750175</td>
-    </tr>
-    <tr>
-      <th>SEA</th>
-      <td>76145833</td>
-    </tr>
-    <tr>
-      <th>SJS</th>
-      <td>64067500</td>
-    </tr>
-    <tr>
-      <th>STL</th>
-      <td>83970357</td>
-    </tr>
-    <tr>
-      <th>TBL</th>
-      <td>98486665</td>
-    </tr>
-    <tr>
-      <th>TOR</th>
-      <td>108631449</td>
-    </tr>
-    <tr>
-      <th>VAN</th>
-      <td>84808750</td>
-    </tr>
-    <tr>
-      <th>VGK</th>
-      <td>106427483</td>
-    </tr>
-    <tr>
-      <th>WAS</th>
-      <td>76820834</td>
-    </tr>
-    <tr>
-      <th>WPG</th>
-      <td>85741856</td>
     </tr>
   </tbody>
 </table>
@@ -1166,6 +1219,7 @@ document.write(`
 </div>
 <p>Center was the most highly paid position, at an average of over 3 million dollars.</p>
 <p>If we had not selected the two columns as our first step, <code class="docutils literal notranslate"><span class="pre">group</span></code> would attempt to “average” the categorical columns in <code class="docutils literal notranslate"><span class="pre">nhl</span></code> and will generate an error. (It is impossible to average two strings like “Nathan MacKinnon” and “Connor McDavid”.)</p>
+<p><span style="color:green">I added a try-except block so the error prints more readably.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -1177,6 +1231,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>agg function failed [how-&gt;mean,dtype-&gt;object]
+(&#39;agg function failed [how-&gt;mean,dtype-&gt;object]&#39;,)
 </pre></div>
 </div>
 </div>
@@ -1214,24 +1269,6 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../1/Index-Slice.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.1. </span>Selecting and Sorting</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../3/Cross-Classifying_by_More_than_One_Variable.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Cross-Classifying by More than One Variable</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1248,8 +1285,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">3.2.1. Counting the Number in Each Category</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">3.2.2. Example: NHL Salaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">Counting the Number in Each Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
 </ul>
   </nav></div>
 
