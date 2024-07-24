@@ -46,5 +46,5 @@ sections:
     title: Classifying by One Variable
   - file: chapters/03/3/Cross-Classifying_by_More_than_One_Variable
     title: Cross-Classifying by More than One Variable
-  - file: chapters/03/3/Applying_a_Function_to_a_Column
+  - file: chapters/03/4/Applying_a_Function_to_a_Column
     title: Manipulation and Transformation

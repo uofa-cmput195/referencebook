@@ -75,6 +75,7 @@
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.4. Applying a Function to a Column" href="../4/Applying_a_Function_to_a_Column.html" />
     <link rel="prev" title="3.2. Classifying by One Variable" href="../2/Classifying_by_One_Variable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -208,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Cross-Classifying by More than One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
 </ul>
 </li>
 </ul>
@@ -791,7 +793,13 @@ document.write(`
 <p>An example will help clarify this. Here is <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> being used to find the total price of the cones in each cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;Price&#39;</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">index</span> <span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> 
+    <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;Price&#39;</span><span class="p">,</span> 
+    <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> 
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -848,7 +856,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>And here is <code class="docutils literal notranslate"><span class="pre">group</span></code> doing the same thing.</p>
+<p>And here is <code class="docutils literal notranslate"><span class="pre">groupby</span></code> doing the same thing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span> <span class="nb">sum</span><span class="p">()</span>
@@ -1773,6 +1781,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">3.2. </span>Classifying by One Variable</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../4/Applying_a_Function_to_a_Column.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Applying a Function to a Column</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -1,0 +1,1344 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Classifying by One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-148221575-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/2/Leo_Edit_Classifying_by_One_Variable';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/2/Leo_Edit_Classifying_by_One_Variable.html" />
+    <link rel="icon" href="../../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/2/why-data-science.html">1.2. Why Data Science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/6/Summary-1.html">1.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/causality-and-experiments.html">2. Causality and Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/3/establishing-causality.html">2.3. Establishing Causality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/4/randomization.html">2.4. Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3/Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/uofa-cmput195/referencebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/03/2/Leo_Edit_Classifying_by_One_Variable.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Classifying by One Variable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">Counting the Number in Each Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="classifying-by-one-variable">
+<h1>Classifying by One Variable<a class="headerlink" href="#classifying-by-one-variable" title="Link to this heading">#</a></h1>
+<p>Data scientists often need to classify individuals into groups according to shared features, and then identify some characteristics of the groups. For example, in the top movies dataset, it’s common to ask:</p>
+<p><strong>What was the total gross <span style="color:green">(earnings)</span> in each year?</strong></p>
+<p>This type of question involves classifying individuals into categories that are not numerical. To classify individuals into categories we use <strong>grouping</strong>.</p>
+<section id="counting-the-number-in-each-category">
+<h2>Counting the Number in Each Category<a class="headerlink" href="#counting-the-number-in-each-category" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method with a single argument counts the number of rows for each category in a column. The result contains one row per unique value in the grouped column.</p>
+<p>Here is a small dataframe of data on ice cream cones. The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method can be used to list the distinct flavors and provide the counts of each flavor.</p>
+<p><span style="color:green">Not sure about this, but the University might prefer to use the canadian spelling “Flavour”. Although, American spelling is the standard in CS.</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;Flavor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;strawberry&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;strawberry&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.55</span><span class="p">,</span> <span class="mf">4.75</span><span class="p">,</span> <span class="mf">6.55</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">]}</span>
+<span class="p">)</span>
+<span class="n">cones</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>strawberry</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>chocolate</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chocolate</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>strawberry</td>
+      <td>5.25</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chocolate</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f163156e7b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> returns a strange-looking <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. It has split the data into separate groups. You can see the groups by applying the display function to this <code class="docutils literal notranslate"><span class="pre">gropupby</span></code> object. (If you are not familiar with <code class="docutils literal notranslate"><span class="pre">apply()</span></code> don’t worry we will cover it in detail later in this chapter.)</p>
+<p><span style="color:green">The .apply(display) below gives a DeprecationWarning. I placed a cell below that does the same thing without throwing the warning. Probably not a big deal, we could just silence the warning instead if we wanted to.</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">display</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>chocolate</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chocolate</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chocolate</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>strawberry</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>strawberry</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_48074/1340326464.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  cones.groupby(&#39;Flavor&#39;).apply(display)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)[[</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">display</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>chocolate</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chocolate</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chocolate</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>strawberry</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>strawberry</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You may also want to view different properties of the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> object. Here is how you can do it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">Price</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>chocolate</th>
+      <td>3.0</td>
+      <td>5.516667</td>
+      <td>0.929157</td>
+      <td>4.75</td>
+      <td>5.000</td>
+      <td>5.25</td>
+      <td>5.900</td>
+      <td>6.55</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>2.0</td>
+      <td>4.400000</td>
+      <td>1.202082</td>
+      <td>3.55</td>
+      <td>3.975</td>
+      <td>4.40</td>
+      <td>4.825</td>
+      <td>5.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Though the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method grouped the dataframe, it won’t <s>do anything on your dataframe</s> <span style="color:green">affect any non-grouping columns</span> unless explicitly told to do so. So we need a function for aggregation. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> provides a range of aggregate functions including <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">count()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code>, and <code class="docutils literal notranslate"><span class="pre">min()</span></code>, necessary to perform effective data analysis. We can also call <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> on this object with an aggregation function in order to apply your own defined aggregation. We will limit ourselves to the built-in aggregations only.</p>
+<p>Let’s first count the number of rows in each category:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>chocolate</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice that this can all be worked out from just the <code class="docutils literal notranslate"><span class="pre">Flavor</span></code> column. The <code class="docutils literal notranslate"><span class="pre">Price</span></code> column has not been used.</p>
+<p>But what if we wanted the total price of the cones of each different flavor? We can call another aggregate function <code class="docutils literal notranslate"><span class="pre">sum()</span></code> to get the information. Note that the column used for grouping becomes the index column in the grouped table. If you don’t want to use that as index you can simply assign false to <code class="docutils literal notranslate"><span class="pre">as_index</span></code>(an optional argument)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>chocolate</th>
+      <td>16.55</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leo: I added an example of the as_index argument.</span>
+<span class="n">cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>chocolate</td>
+      <td>16.55</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>strawberry</td>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Note:</strong> Choosing the appropriate aggregate function <span style="color:green">is </span>crucial for data analysis, which often depends on the question and the datatype of the column.</p>
+</section>
+<section id="example-nhl-salaries">
+<h2>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
+<p>The dataframe <code class="docutils literal notranslate"><span class="pre">nhl</span></code> contains data on the 2023-2024 players in the National Hockey League. We will answer some datascience questions about this dataset using grouping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Position</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Nathan MacKinnon</td>
+      <td>COL</td>
+      <td>C</td>
+      <td>12600000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Connor McDavid</td>
+      <td>EDM</td>
+      <td>C</td>
+      <td>12500000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Artemi Panarin</td>
+      <td>NYR</td>
+      <td>LW</td>
+      <td>11642857</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Auston Matthews</td>
+      <td>TOR</td>
+      <td>C</td>
+      <td>11640250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Erik Karlsson</td>
+      <td>PIT</td>
+      <td>D</td>
+      <td>11500000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>Stefan Noesen</td>
+      <td>CAR</td>
+      <td>RW</td>
+      <td>762500</td>
+    </tr>
+    <tr>
+      <th>797</th>
+      <td>Vincent Desharnais</td>
+      <td>EDM</td>
+      <td>D</td>
+      <td>762500</td>
+    </tr>
+    <tr>
+      <th>798</th>
+      <td>Boris Katchouk</td>
+      <td>OTT</td>
+      <td>LW</td>
+      <td>758333</td>
+    </tr>
+    <tr>
+      <th>799</th>
+      <td>Taylor Raddysh</td>
+      <td>CHI</td>
+      <td>RW</td>
+      <td>758333</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>Ville Heinola</td>
+      <td>WPG</td>
+      <td>D</td>
+      <td>224000</td>
+    </tr>
+  </tbody>
+</table>
+<p>801 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p><strong>1.</strong> How much money did each team pay for its players’ salaries?</p>
+<p>The only columns involved are <code class="docutils literal notranslate"><span class="pre">Team</span></code> and <code class="docutils literal notranslate"><span class="pre">Salary</span></code>. We have to group the rows by <code class="docutils literal notranslate"><span class="pre">Team</span></code> and then <code class="docutils literal notranslate"><span class="pre">sum()</span></code> the salaries of the groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">teams_and_money</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">]]</span>
+<span class="n">teams_and_money</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># This looks a little weird on the textbook when we show all rows, maybe head() could be better?</span>
+<span class="n">teams_and_money</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Salary</th>
+    </tr>
+    <tr>
+      <th>Team</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ANA</th>
+      <td>68864167</td>
+    </tr>
+    <tr>
+      <th>ARI</th>
+      <td>65684872</td>
+    </tr>
+    <tr>
+      <th>BOS</th>
+      <td>85920000</td>
+    </tr>
+    <tr>
+      <th>BUF</th>
+      <td>71523570</td>
+    </tr>
+    <tr>
+      <th>CAR</th>
+      <td>95409417</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>2.</strong> How many NHL players were there in each of the five positions?</p>
+<p>We just need the <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Position</span></code> columns to count the number of players in each position. Then we have to classify by <code class="docutils literal notranslate"><span class="pre">Position</span></code>, and count.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhl</span><span class="p">[[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span><span class="s1">&#39;Position&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>240</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>260</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>98</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>3.</strong> What was the average salary of the players at each of the five positions?</p>
+<p>This time, we have to group by <code class="docutils literal notranslate"><span class="pre">Position</span></code> and take the mean of the salaries. For clarity, we will work with a table of just the positions and the salaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positions_and_money</span> <span class="o">=</span> <span class="n">nhl</span><span class="p">[[</span><span class="s1">&#39;Position&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">]]</span>
+<span class="n">positions_and_money</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Salary</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>3.419478e+06</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>3.199451e+06</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>3.018196e+06</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>3.298865e+06</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>3.027276e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Center was the most highly paid position, at an average of over 3 million dollars.</p>
+<p>If we had not selected the two columns as our first step, <code class="docutils literal notranslate"><span class="pre">group</span></code> would attempt to “average” the categorical columns in <code class="docutils literal notranslate"><span class="pre">nhl</span></code> and will generate an error. (It is impossible to average two strings like “Nathan MacKinnon” and “Connor McDavid”.)</p>
+<p><span style="color:green">I added a try-except block so the error prints more readably.</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+	<span class="n">nhl</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>agg function failed [how-&gt;mean,dtype-&gt;object]
+(&#39;agg function failed [how-&gt;mean,dtype-&gt;object]&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/03/2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-the-number-in-each-category">Counting the Number in Each Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rejwana Haque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

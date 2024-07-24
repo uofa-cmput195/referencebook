@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Applying a Function to a Column &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>3.4. Applying a Function to a Column &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -75,6 +75,7 @@
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="3.3. Cross-Classifying by More than One Variable" href="../3/Cross-Classifying_by_More_than_One_Variable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,8 +137,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,7 +182,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
@@ -205,10 +204,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Manipulation and Transformation</a></li>
 </ul>
 </li>
 </ul>
@@ -374,8 +374,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">Functions as Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">3.4.1. <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">3.4.2. Functions as Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">3.4.2.1. Applying Functions to Rows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">3.4.3. Example: Canada Population</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">3.4.3.1. Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -390,7 +397,7 @@ document.write(`
   <div class="cell tag_remove-input docutils container">
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="applying-a-function-to-a-column">
-<h1>Applying a Function to a Column<a class="headerlink" href="#applying-a-function-to-a-column" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.4. </span>Applying a Function to a Column<a class="headerlink" href="#applying-a-function-to-a-column" title="Link to this heading">#</a></h1>
 <p>In data science, we often need to perform complex transformations and calculations on our data. So far we have seen some examples of creating new columns of tables by applying functions to existing columns or to other arrays. All of those functions took arrays as their arguments. But frequently we will want to convert the entries in a column by a function that doesn’t take an array as its argument.</p>
 <p>For example, it might take just one number as its argument, as in the function <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> defined below.</p>
 <div class="cell docutils container">
@@ -508,7 +515,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="apply">
-<h2><code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#apply" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4.1. </span><code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#apply" title="Link to this heading">#</a></h2>
 <p>To convert each of the scores to it’s letter grade, we will use a new Table method. The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method calls a function on each element of a column, forming a new array of return values. To indicate which function to call, just name it (without quotation marks or parentheses). The name of the column of input values is a string that must still appear within quotation marks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -590,7 +597,7 @@ Name: Score, dtype: object
 </div>
 </section>
 <section id="functions-as-values">
-<h2>Functions as Values<a class="headerlink" href="#functions-as-values" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4.2. </span>Functions as Values<a class="headerlink" href="#functions-as-values" title="Link to this heading">#</a></h2>
 <p>We’ve seen that Python has many kinds of values.  For example, <code class="docutils literal notranslate"><span class="pre">6</span></code> is a number value, <code class="docutils literal notranslate"><span class="pre">&quot;cake&quot;</span></code> is a text value, <code class="docutils literal notranslate"><span class="pre">Table()</span></code> is an empty table, and <code class="docutils literal notranslate"><span class="pre">ages</span></code> is a name for a table value (since we defined it above).</p>
 <p>In Python, every function, including <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code>, is also a value. It helps to think about recipes again. A recipe for cake is a real thing, distinct from cakes or ingredients, and you can give it a name like “Ani’s cake recipe.” When we defined <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> with a <code class="docutils literal notranslate"><span class="pre">def</span></code> statement, we actually did two separate things: we created a function that converts a score to letter grade, and we gave it the name <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code>.</p>
 <p>We can refer to any function by writing its name, without the parentheses or arguments necessary to actually call it. We did this when we called <code class="docutils literal notranslate"><span class="pre">apply</span></code> above.  When we write a function’s name by itself as the last line in a cell, Python produces a text representation of the function, just like it would print out a number or a string value.</p>
@@ -616,19 +623,607 @@ Name: Score, dtype: object
 </div>
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">categorize</span></code> is a name for a function.  It’s the same function as <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code>, so the printed value is exactly the same.</p>
+<p>categorize</p>
+<p>Let us see another application of <code class="docutils literal notranslate"><span class="pre">apply</span></code>.</p>
+<ul class="simple">
+<li><p>apply() takes an argument that’s common in pandas: <strong>axis</strong>.</p></li>
+<li><p>The <strong>axis</strong> argument can be either 0 or 1. By default, it’s zero.</p></li>
+<li><p>When axis = 0, the function is applied to a single column.</p></li>
+<li><p>When axis = 1, the function is applied to the entire row.</p></li>
+</ul>
+<section id="applying-functions-to-rows">
+<h3><span class="section-number">3.4.2.1. </span>Applying Functions to Rows<a class="headerlink" href="#applying-functions-to-rows" title="Link to this heading">#</a></h3>
+<p>Sometimes, we may need to apply a function to a row instead of a column. Let’s see an example. For this example, we will redefine our initial <code class="docutils literal notranslate"><span class="pre">students</span></code> dataframe with an additional column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categorize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;David&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span>
+    <span class="s1">&#39;Quiz&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">72</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">students</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.categorize_score(score)&gt;
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Quiz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>85</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>92</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>78</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>64</td>
+      <td>72</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Let’s say that, the ‘Quiz’ is worth 10% of their final grade.</p></li>
+<li><p>Let’s create a column called <strong>Final_Grade</strong>. To do this, we need to compute:</p></li>
+</ul>
+<blockquote>
+<div><p>(0.9) * (Score) + (0.1) * (Quiz)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>This formula relies on two columns! If we use axis = 0, we don’t have all of the necessary information.</p></li>
+<li><p>Note that when applying to a row, we call apply() on the whole dataframe, not just a single column!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">computeFinalGrade</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+	<span class="n">Score</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span>
+	<span class="n">Quiz</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Quiz&#39;</span><span class="p">]</span>
+
+	<span class="n">final_grade</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.9</span><span class="o">*</span><span class="n">Score</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">Quiz</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">final_grade</span>
+
+<span class="n">students</span><span class="p">[</span><span class="s1">&#39;Final_Grade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">computeFinalGrade</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">students</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Quiz</th>
+      <th>Final_Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alice</td>
+      <td>85</td>
+      <td>95</td>
+      <td>86.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bob</td>
+      <td>92</td>
+      <td>70</td>
+      <td>89.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charlie</td>
+      <td>78</td>
+      <td>91</td>
+      <td>79.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>David</td>
+      <td>64</td>
+      <td>72</td>
+      <td>64.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="example-canada-population">
+<h2><span class="section-number">3.4.3. </span>Example: Canada Population<a class="headerlink" href="#example-canada-population" title="Link to this heading">#</a></h2>
+<p>One of the most prevalent applications of the <code class="docutils literal notranslate"><span class="pre">apply</span></code> function is in data preprocessing. While we will explore data preprocessing techniques in greater detail in subsequent chapters, this section provides a brief example to illustrate how <code class="docutils literal notranslate"><span class="pre">apply</span></code> can be utilized for preprocessing tasks.</p>
+<p>We will take Canada’s population dataset (in the years 2021 to 2022) for preprocessing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geography</th>
+      <th>Jan 2021</th>
+      <th>Jan 2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Canada</td>
+      <td>38,058,291</td>
+      <td>38,567,576</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Newfoundland and Labrador</td>
+      <td>525,895</td>
+      <td>528,977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Prince Edward Island</td>
+      <td>159,240</td>
+      <td>164,195</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nova Scotia</td>
+      <td>990,025</td>
+      <td>1,010,460</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New Brunswick</td>
+      <td>784,950</td>
+      <td>798,656</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Quebec</td>
+      <td>8,550,561</td>
+      <td>8,613,999</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ontario</td>
+      <td>14,772,726</td>
+      <td>14,999,441</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Manitoba</td>
+      <td>1,383,854</td>
+      <td>1,400,663</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Saskatchewan</td>
+      <td>1,166,348</td>
+      <td>1,171,031</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Alberta</td>
+      <td>4,418,338</td>
+      <td>4,465,537</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>British Columbia</td>
+      <td>5,180,015</td>
+      <td>5,286,478</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Yukon</td>
+      <td>42,157</td>
+      <td>43,063</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Northwest Territories 5</td>
+      <td>44,432</td>
+      <td>44,791</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Nunavut 5</td>
+      <td>39,750</td>
+      <td>40,285</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we want to calculate the population growth fron year 2021 to 2022 it will throw a Typeerror.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+	<span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2022&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2022&#39;</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Let us see another application of <code class="docutils literal notranslate"><span class="pre">apply</span></code>.</p>
+<p>Let’s examine the type of each column to understand why the arithmetic operation is causing an error. This issue arises because <code class="docutils literal notranslate"><span class="pre">pandas</span></code> has interpreted the columns as strings instead of numbers, and arithmetic operations cannot be performed on string data types.</p>
+<p>To diagnose and resolve this, we can use the <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> attribute of the DataFrame, which will show us the data type of each column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Population</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geography    object
+Jan 2021     object
+Jan 2022     object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, both ‘Jan 2022’ and ‘Jan 2021’ are of type object, which typically indicates string data. As you can see the values of these two columns contain commas, these values are interpreted as strings by <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.
+To perform arithmetic operations, we need to remove the commas to convert these columns to numeric data types.</p>
+<p>Let’s define a function <code class="docutils literal notranslate"><span class="pre">to_number()</span></code> for removing ‘,’ and converting to <code class="docutils literal notranslate"><span class="pre">int</span></code>. Then we will apply the function to both ‘Jan 2022’ and ‘Jan 2021’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_number</span><span class="p">(</span><span class="n">str_count</span><span class="p">):</span>
+    <span class="n">num_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_count</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">num_count</span>
+
+
+<span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2022&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">to_number</span><span class="p">)</span>
+<span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2021&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2021&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">to_number</span><span class="p">)</span>
+<span class="n">Population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geography</th>
+      <th>Jan 2021</th>
+      <th>Jan 2022</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Canada</td>
+      <td>38058291</td>
+      <td>38567576</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Newfoundland and Labrador</td>
+      <td>525895</td>
+      <td>528977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Prince Edward Island</td>
+      <td>159240</td>
+      <td>164195</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nova Scotia</td>
+      <td>990025</td>
+      <td>1010460</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New Brunswick</td>
+      <td>784950</td>
+      <td>798656</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Quebec</td>
+      <td>8550561</td>
+      <td>8613999</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ontario</td>
+      <td>14772726</td>
+      <td>14999441</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Manitoba</td>
+      <td>1383854</td>
+      <td>1400663</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Saskatchewan</td>
+      <td>1166348</td>
+      <td>1171031</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Alberta</td>
+      <td>4418338</td>
+      <td>4465537</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>British Columbia</td>
+      <td>5180015</td>
+      <td>5286478</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Yukon</td>
+      <td>42157</td>
+      <td>43063</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Northwest Territories 5</td>
+      <td>44432</td>
+      <td>44791</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Nunavut 5</td>
+      <td>39750</td>
+      <td>40285</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Population</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Geography    object
+Jan 2021      int64
+Jan 2022      int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now as  both columns ‘Jan 2022’ and ‘Jan 2021’ are integer type we can calculate the percentage of population growth within one year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Population</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%G</span><span class="s1">rowth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2022&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2021&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">Population</span><span class="p">[</span><span class="s1">&#39;Jan 2021&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">Population</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Geography</th>
+      <th>Jan 2021</th>
+      <th>Jan 2022</th>
+      <th>%Growth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Canada</td>
+      <td>38058291</td>
+      <td>38567576</td>
+      <td>1.338171</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Newfoundland and Labrador</td>
+      <td>525895</td>
+      <td>528977</td>
+      <td>0.586049</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Prince Edward Island</td>
+      <td>159240</td>
+      <td>164195</td>
+      <td>3.111655</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nova Scotia</td>
+      <td>990025</td>
+      <td>1010460</td>
+      <td>2.064089</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New Brunswick</td>
+      <td>784950</td>
+      <td>798656</td>
+      <td>1.746098</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Quebec</td>
+      <td>8550561</td>
+      <td>8613999</td>
+      <td>0.741916</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Ontario</td>
+      <td>14772726</td>
+      <td>14999441</td>
+      <td>1.534686</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Manitoba</td>
+      <td>1383854</td>
+      <td>1400663</td>
+      <td>1.214651</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Saskatchewan</td>
+      <td>1166348</td>
+      <td>1171031</td>
+      <td>0.401510</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Alberta</td>
+      <td>4418338</td>
+      <td>4465537</td>
+      <td>1.068252</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>British Columbia</td>
+      <td>5180015</td>
+      <td>5286478</td>
+      <td>2.055264</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Yukon</td>
+      <td>42157</td>
+      <td>43063</td>
+      <td>2.149109</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Northwest Territories 5</td>
+      <td>44432</td>
+      <td>44791</td>
+      <td>0.807976</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Nunavut 5</td>
+      <td>39750</td>
+      <td>40285</td>
+      <td>1.345912</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="vectorized-operation-vs-row-wise-apply">
+<h3><span class="section-number">3.4.3.1. </span>Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#vectorized-operation-vs-row-wise-apply" title="Link to this heading">#</a></h3>
+<p>You might consider calculating the ‘%Growth’ column using row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code>. While this approach will yield correct results, you may wonder why vectorized operations are preferred over row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code>. The reason is that vectorized operations are not only simpler but also more efficient in terms of performance and memory usage.</p>
+<p>So, when is row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code> appropriate? In brief, row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code> is preferable in situations where vectorized operations are either infeasible or too complex to implement.</p>
+</section>
 </section>
 </section>
 
@@ -662,6 +1257,15 @@ Name: Score, dtype: object
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../3/Cross-Classifying_by_More_than_One_Variable.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Cross-Classifying by More than One Variable</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -678,8 +1282,15 @@ Name: Score, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">Functions as Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">3.4.1. <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">3.4.2. Functions as Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">3.4.2.1. Applying Functions to Rows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">3.4.3. Example: Canada Population</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">3.4.3.1. Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

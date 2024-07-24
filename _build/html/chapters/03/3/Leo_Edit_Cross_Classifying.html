@@ -1,0 +1,1933 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cross-Classifying by More than One Variable &#8212; Introduction to Principles and Techniques of Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-148221575-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-148221575-1');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/3/Leo_Edit_Cross_Classifying';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/3/Leo_Edit_Cross_Classifying.html" />
+    <link rel="icon" href="../../../_static/logo.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Introduction to Principles and Techniques of Data Science - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Introduction to Principles and Techniques of Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../01/1/2/statistical-techniques.html">1.1.2. Statistical Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/2/why-data-science.html">1.2. Why Data Science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/3/importance-and-impact-of-datascience.html">1.3. Importance and Impact of Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/4/applications-and%20use-cases.html">1.4. Key Applications and Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/5/Data_Science_Life_Cycle.html">1.5. Data Science Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/6/Summary-1.html">1.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/causality-and-experiments.html">2. Causality and Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/1/observation-and-visualization-john-snow-and-the-broad-street-pump.html">2.1. John Snow and the Broad Street Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/2/snow-s-grand-experiment.html">2.2. Snow’s “Grand Experiment”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/3/establishing-causality.html">2.3. Establishing Causality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/4/randomization.html">2.4. Randomization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4/Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/uofa-cmput195/referencebook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/chapters/03/3/Leo_Edit_Cross_Classifying.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cross-Classifying by More than One Variable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">Two Variables: Counting the Number in Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">Two Variables: Finding a Characteristic of Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../../assets/data/&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># import matplotlib.pyplot as plots</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+
+<span class="n">nhl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span> <span class="o">+</span> <span class="s1">&#39;nhl_salaries.csv&#39;</span><span class="p">)</span>
+<span class="n">nhl</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Rank&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color:green">Not a big deal, but I’ve always seen matplotlib.pyplot imported as plt. Could be good to use this so stackoverflow examples are more intuitive for the students. I added this above.</span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="cross-classifying-by-more-than-one-variable">
+<h1>Cross-Classifying by More than One Variable<a class="headerlink" href="#cross-classifying-by-more-than-one-variable" title="Link to this heading">#</a></h1>
+<p>When individuals have multiple features, there are many different ways to classify them. For example, if we have a population of college students for each of whom we have recorded a major and the number of years in college, then the students could be classified by major, or by year, or by a combination of major and year.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method also allows us to classify individuals according to multiple variables. This is called <em>cross-classifying</em>.</p>
+<section id="two-variables-counting-the-number-in-each-paired-category">
+<h2>Two Variables: Counting the Number in Each Paired Category<a class="headerlink" href="#two-variables-counting-the-number-in-each-paired-category" title="Link to this heading">#</a></h2>
+<p>The dataframe <code class="docutils literal notranslate"><span class="pre">more_cones</span></code> records the flavor, color, and price of six ice cream cones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;Flavor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;strawberry&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;strawberry&#39;</span><span class="p">,</span> <span class="s1">&#39;chocolate&#39;</span><span class="p">,</span> <span class="s1">&#39;bubblegum&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Color&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;light brown&#39;</span><span class="p">,</span> <span class="s1">&#39;dark brown&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;dark brown&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.55</span><span class="p">,</span> <span class="mf">4.75</span><span class="p">,</span> <span class="mf">5.00</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">,</span> <span class="mf">4.75</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">more_cones</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Flavor</th>
+      <th>Color</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>strawberry</td>
+      <td>pink</td>
+      <td>3.55</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>chocolate</td>
+      <td>light brown</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chocolate</td>
+      <td>dark brown</td>
+      <td>5.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>strawberry</td>
+      <td>pink</td>
+      <td>5.25</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chocolate</td>
+      <td>dark brown</td>
+      <td>5.25</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>bubblegum</td>
+      <td>pink</td>
+      <td>4.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We know how to use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and count the number of cones of each flavor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Flavor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Color</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>chocolate</th>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>But now each cone has a color as well. To classify the cones by both flavor and color, we will pass a list of columns as an argument to <code class="docutils literal notranslate"><span class="pre">groupby</span></code>. The resulting dataframe has one row for every <em>unique combination</em> of values that appear together in the grouped columns. As before, a single argument (a list, in this case, but an array would work too) needs to be passed.</p>
+<p>Although there are six cones, there are only four unique combinations of flavor and color. Two of the cones were dark brown chocolate, and two pink strawberry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <th>pink</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">chocolate</th>
+      <th>dark brown</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>light brown</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <th>pink</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="two-variables-finding-a-characteristic-of-each-paired-category">
+<h2>Two Variables: Finding a Characteristic of Each Paired Category<a class="headerlink" href="#two-variables-finding-a-characteristic-of-each-paired-category" title="Link to this heading">#</a></h2>
+<p>The aggregation function aggregates all other columns that are not in the list of grouped columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <th>pink</th>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">chocolate</th>
+      <th>dark brown</th>
+      <td>10.25</td>
+    </tr>
+    <tr>
+      <th>light brown</th>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <th>pink</th>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Three or More Variables.</strong> You can use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to classify rows by three or more categorical variables. Just include them all in the list that is the first argument. But cross-classifying by multiple variables can become complex, as the number of distinct combinations of categories can be quite large.</p>
+</section>
+<section id="pivot-tables-rearranging-the-output-of-group">
+<h2>Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code><a class="headerlink" href="#pivot-tables-rearranging-the-output-of-group" title="Link to this heading">#</a></h2>
+<p>Many uses of cross-classification involve just two categorical variables, like <code class="docutils literal notranslate"><span class="pre">Flavor</span></code> and <code class="docutils literal notranslate"><span class="pre">Color</span></code> in the example above. In these cases it is possible to display the results of the classification in a different kind of table, called a <em>pivot table</em>. Pivot tables, also known as <em>contingency tables</em>, make it easier to work with data that have been classified according to two variables.</p>
+<p>Recall the use of <code class="docutils literal notranslate"><span class="pre">groupby</span></code> with aggregate function mean to calculate the average price of cones in each paired category of flavor and color:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <th>pink</th>
+      <td>4.750</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">chocolate</th>
+      <th>dark brown</th>
+      <td>5.125</td>
+    </tr>
+    <tr>
+      <th>light brown</th>
+      <td>4.750</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <th>pink</th>
+      <td>4.400</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The same data can be displayed differently using the method <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code>. Ignore the code for a moment, and just examine the table of outcomes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Price</th>
+    </tr>
+    <tr>
+      <th>Color</th>
+      <th>dark brown</th>
+      <th>light brown</th>
+      <th>pink</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>chocolate</th>
+      <td>5.125</td>
+      <td>4.75</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Notice how this table displays all nine possible pairs of flavor and color, including pairs like “dark brown bubblegum” that don’t exist in our data. By default a NaN is placed by pandas to represent Null. Notice also that the mean in each pair appears in the body of the table: to find the number of light brown chocolate cones, run your eye along the row <code class="docutils literal notranslate"><span class="pre">light</span> <span class="pre">brown</span></code> until it meets the column <code class="docutils literal notranslate"><span class="pre">chocolate</span></code>.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code></strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> method is closely related to the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method: it groups together rows that share a combination of values. It differs from <code class="docutils literal notranslate"><span class="pre">groupby</span></code> because it organizes the resulting values in a grid. The first argument to <code class="docutils literal notranslate"><span class="pre">pivot</span></code> is the label of a column that contains the values that will be used to form new columns in the result. The second argument is the label of a column used for the rows. The result gives the count of all rows of the original table that share the combination of column and row values.</p>
+<p>Like <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> can be used with additional arguments to find characteristics of each paired category. An optional third argument called <code class="docutils literal notranslate"><span class="pre">values</span></code> indicates a column of values that will replace the counts in each cell of the grid.  The fourth argument <code class="docutils literal notranslate"><span class="pre">aggfunc</span></code> indicates how to aggregate them all into one aggregated value to be displayed in the cell. If not provided pandas apply mean by default. The <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> is an optional argument which replace NaN with a certain value.</p>
+<p>An example will help clarify this. Here is <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> being used to find the total price of the cones in each cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leo: I re-formatted this so it doesn&#39;t get cut off in the browser format.</span>
+<span class="n">more_cones</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">index</span> <span class="o">=</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Color&#39;</span><span class="p">,</span> 
+    <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;Price&#39;</span><span class="p">,</span> 
+    <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> 
+    <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Color</th>
+      <th>dark brown</th>
+      <th>light brown</th>
+      <th>pink</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>chocolate</th>
+      <td>10.25</td>
+      <td>4.75</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And here is <s><code class="docutils literal notranslate"><span class="pre">group</span></code></s> <span style="color:green">groupby</span> doing the same thing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">more_cones</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Flavor&#39;</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">])</span><span class="o">.</span> <span class="nb">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>Flavor</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bubblegum</th>
+      <th>pink</th>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">chocolate</th>
+      <th>dark brown</th>
+      <td>10.25</td>
+    </tr>
+    <tr>
+      <th>light brown</th>
+      <td>4.75</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <th>pink</th>
+      <td>8.80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Though the numbers in both tables are the same, table produced by <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> is easier to read and lends itself more easily to analysis. The advantage of <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> is that it places grouped values into adjacent columns, so that they can be combined and compared.</p>
+</section>
+<section id="example-nhl-salaries">
+<h2>Example: NHL Salaries<a class="headerlink" href="#example-nhl-salaries" title="Link to this heading">#</a></h2>
+<p>Let’s recall our NHL dataset one more time. Each player’s <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Team</span></code>, <code class="docutils literal notranslate"><span class="pre">Position</span></code> and <code class="docutils literal notranslate"><span class="pre">Salary</span></code> are recorded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Position</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Nathan MacKinnon</td>
+      <td>COL</td>
+      <td>C</td>
+      <td>12600000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Connor McDavid</td>
+      <td>EDM</td>
+      <td>C</td>
+      <td>12500000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Artemi Panarin</td>
+      <td>NYR</td>
+      <td>LW</td>
+      <td>11642857</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Auston Matthews</td>
+      <td>TOR</td>
+      <td>C</td>
+      <td>11640250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Erik Karlsson</td>
+      <td>PIT</td>
+      <td>D</td>
+      <td>11500000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>Stefan Noesen</td>
+      <td>CAR</td>
+      <td>RW</td>
+      <td>762500</td>
+    </tr>
+    <tr>
+      <th>797</th>
+      <td>Vincent Desharnais</td>
+      <td>EDM</td>
+      <td>D</td>
+      <td>762500</td>
+    </tr>
+    <tr>
+      <th>798</th>
+      <td>Boris Katchouk</td>
+      <td>OTT</td>
+      <td>LW</td>
+      <td>758333</td>
+    </tr>
+    <tr>
+      <th>799</th>
+      <td>Taylor Raddysh</td>
+      <td>CHI</td>
+      <td>RW</td>
+      <td>758333</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>Ville Heinola</td>
+      <td>WPG</td>
+      <td>D</td>
+      <td>224000</td>
+    </tr>
+  </tbody>
+</table>
+<p>801 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Each row of the dataframe corresponds to a combination of Name, Team, Position and Salary. There are 801 such combinations in all!</p>
+<p>As a first step, it is a good idea to start with just one or two variables. We will focus on just one pair: Team and Position.</p>
+<p>For example, we may ask:</p>
+<p><strong>How much each Team spent for each Position?</strong></p>
+<p>To answer this question, we must classify by the <code class="docutils literal notranslate"><span class="pre">Team</span></code> and <code class="docutils literal notranslate"><span class="pre">Position</span></code> columns. Let’s start by looking at the <code class="docutils literal notranslate"><span class="pre">Position</span></code> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pos_totals</span> <span class="o">=</span> <span class="n">nhl</span><span class="p">[[</span><span class="s1">&#39;Position&#39;</span><span class="p">,</span><span class="s1">&#39;Salary&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">Pos_totals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Salary</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>820674657</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>831857180</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>220328332</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>428852507</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>296673023</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There are only five categories of Position. The values are so large that it is more helpful to look at percents. For this, we will use the function <code class="docutils literal notranslate"><span class="pre">percents</span></code>. It converts an array of numbers to an array of percents out of the total in the input array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percents</span><span class="p">(</span><span class="n">array_x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span> <span class="p">(</span><span class="n">array_x</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">array_x</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pos_totals</span><span class="p">[</span><span class="s1">&#39;Salary Percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">percents</span> <span class="p">(</span><span class="n">Pos_totals</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">])</span>
+<span class="n">Pos_totals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Salary</th>
+      <th>Salary Percent</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>820674657</td>
+      <td>31.58</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>831857180</td>
+      <td>32.01</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>220328332</td>
+      <td>8.48</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>428852507</td>
+      <td>16.50</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>296673023</td>
+      <td>11.42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We now have the distribution of Salaries among different positions in NHL. More than 33% of the total budget is spent on the Center position, while almost 8.5% is spent on the goalie.</p>
+<p>By using <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code>, we can get a contingency dataframe (a dataframe of sum) of NHL players cross-classified by <code class="docutils literal notranslate"><span class="pre">Position</span></code> and <code class="docutils literal notranslate"><span class="pre">Team</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span> <span class="o">=</span> <span class="n">nhl</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;Position&#39;</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># displays the entire dataframe</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>ANA</th>
+      <th>ARI</th>
+      <th>BOS</th>
+      <th>BUF</th>
+      <th>CAR</th>
+      <th>CBJ</th>
+      <th>CGY</th>
+      <th>CHI</th>
+      <th>COL</th>
+      <th>DAL</th>
+      <th>DET</th>
+      <th>EDM</th>
+      <th>FLA</th>
+      <th>LAK</th>
+      <th>MIN</th>
+      <th>MTL</th>
+      <th>NJD</th>
+      <th>NSH</th>
+      <th>NYI</th>
+      <th>NYR</th>
+      <th>OTT</th>
+      <th>PHI</th>
+      <th>PIT</th>
+      <th>SEA</th>
+      <th>SJS</th>
+      <th>STL</th>
+      <th>TBL</th>
+      <th>TOR</th>
+      <th>VAN</th>
+      <th>VGK</th>
+      <th>WAS</th>
+      <th>WPG</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>22369167</td>
+      <td>28990999</td>
+      <td>19207500</td>
+      <td>20462023</td>
+      <td>30845000</td>
+      <td>12287500</td>
+      <td>23288333</td>
+      <td>18300000</td>
+      <td>21850000</td>
+      <td>24058334</td>
+      <td>26835000</td>
+      <td>44000000</td>
+      <td>30666667</td>
+      <td>27344167</td>
+      <td>13463333</td>
+      <td>21875000</td>
+      <td>20175000</td>
+      <td>20707412</td>
+      <td>39005000</td>
+      <td>24207500</td>
+      <td>30922500</td>
+      <td>28613333</td>
+      <td>29125000</td>
+      <td>11064166</td>
+      <td>20204167</td>
+      <td>31484524</td>
+      <td>30575000</td>
+      <td>36440116</td>
+      <td>26558750</td>
+      <td>43225000</td>
+      <td>18790833</td>
+      <td>23733333</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>15762500</td>
+      <td>13518810</td>
+      <td>32287500</td>
+      <td>23510714</td>
+      <td>33679167</td>
+      <td>31516666</td>
+      <td>17176667</td>
+      <td>22247500</td>
+      <td>26800000</td>
+      <td>25688333</td>
+      <td>25788333</td>
+      <td>27262500</td>
+      <td>21986667</td>
+      <td>26732500</td>
+      <td>22550000</td>
+      <td>13945832</td>
+      <td>23343333</td>
+      <td>30984000</td>
+      <td>25475000</td>
+      <td>27734500</td>
+      <td>22030000</td>
+      <td>27400000</td>
+      <td>27725175</td>
+      <td>26497500</td>
+      <td>18625000</td>
+      <td>28350000</td>
+      <td>36645000</td>
+      <td>37475000</td>
+      <td>32300000</td>
+      <td>32944150</td>
+      <td>24425833</td>
+      <td>29449000</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>7212500</td>
+      <td>4675000</td>
+      <td>8475000</td>
+      <td>2637500</td>
+      <td>6162500</td>
+      <td>6450000</td>
+      <td>8200000</td>
+      <td>4762500</td>
+      <td>6175000</td>
+      <td>5000000</td>
+      <td>7150000</td>
+      <td>3362500</td>
+      <td>11100000</td>
+      <td>3375000</td>
+      <td>7250000</td>
+      <td>12390000</td>
+      <td>6600000</td>
+      <td>7000000</td>
+      <td>6750000</td>
+      <td>6491667</td>
+      <td>6750000</td>
+      <td>859167</td>
+      <td>6875000</td>
+      <td>7100000</td>
+      <td>6525000</td>
+      <td>6775000</td>
+      <td>11050000</td>
+      <td>11441666</td>
+      <td>6800000</td>
+      <td>10666666</td>
+      <td>6350000</td>
+      <td>7916666</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>9570000</td>
+      <td>9475000</td>
+      <td>13925000</td>
+      <td>14550000</td>
+      <td>12010250</td>
+      <td>11600000</td>
+      <td>23337500</td>
+      <td>10000000</td>
+      <td>17250000</td>
+      <td>32450000</td>
+      <td>4750000</td>
+      <td>7875000</td>
+      <td>14110000</td>
+      <td>21825000</td>
+      <td>20018333</td>
+      <td>5300000</td>
+      <td>24538333</td>
+      <td>11000000</td>
+      <td>5300000</td>
+      <td>30175356</td>
+      <td>13940713</td>
+      <td>9375000</td>
+      <td>7100000</td>
+      <td>19134167</td>
+      <td>6813333</td>
+      <td>12910833</td>
+      <td>9941665</td>
+      <td>10221667</td>
+      <td>6625000</td>
+      <td>2225000</td>
+      <td>15112500</td>
+      <td>16392857</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>13950000</td>
+      <td>9025063</td>
+      <td>12025000</td>
+      <td>10363333</td>
+      <td>12712500</td>
+      <td>13900000</td>
+      <td>825000</td>
+      <td>3158333</td>
+      <td>16475000</td>
+      <td>0</td>
+      <td>13550000</td>
+      <td>1550000</td>
+      <td>7500000</td>
+      <td>3069167</td>
+      <td>7700000</td>
+      <td>24025000</td>
+      <td>3138334</td>
+      <td>4757500</td>
+      <td>9262458</td>
+      <td>2900000</td>
+      <td>2950000</td>
+      <td>10600000</td>
+      <td>10925000</td>
+      <td>12350000</td>
+      <td>11900000</td>
+      <td>4450000</td>
+      <td>10275000</td>
+      <td>13053000</td>
+      <td>12525000</td>
+      <td>17366667</td>
+      <td>12141668</td>
+      <td>8250000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here you see the power of <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> over other cross-classification methods. Each column of sum is a distribution of the amount spent at a specific position. Converting the counts to percentages allows us to compare the 5 distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span> <span class="o">=</span> <span class="n">totals</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">percents</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span> 
+    <span class="n">display</span><span class="p">(</span><span class="n">distributions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>ANA</th>
+      <th>ARI</th>
+      <th>BOS</th>
+      <th>BUF</th>
+      <th>CAR</th>
+      <th>CBJ</th>
+      <th>CGY</th>
+      <th>CHI</th>
+      <th>COL</th>
+      <th>DAL</th>
+      <th>DET</th>
+      <th>EDM</th>
+      <th>FLA</th>
+      <th>LAK</th>
+      <th>MIN</th>
+      <th>MTL</th>
+      <th>NJD</th>
+      <th>NSH</th>
+      <th>NYI</th>
+      <th>NYR</th>
+      <th>OTT</th>
+      <th>PHI</th>
+      <th>PIT</th>
+      <th>SEA</th>
+      <th>SJS</th>
+      <th>STL</th>
+      <th>TBL</th>
+      <th>TOR</th>
+      <th>VAN</th>
+      <th>VGK</th>
+      <th>WAS</th>
+      <th>WPG</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>32.48</td>
+      <td>44.14</td>
+      <td>22.36</td>
+      <td>28.61</td>
+      <td>32.33</td>
+      <td>16.22</td>
+      <td>31.98</td>
+      <td>31.30</td>
+      <td>24.68</td>
+      <td>27.59</td>
+      <td>34.37</td>
+      <td>52.35</td>
+      <td>35.92</td>
+      <td>33.21</td>
+      <td>18.97</td>
+      <td>28.21</td>
+      <td>25.93</td>
+      <td>27.81</td>
+      <td>45.46</td>
+      <td>26.45</td>
+      <td>40.37</td>
+      <td>37.23</td>
+      <td>35.63</td>
+      <td>14.53</td>
+      <td>31.54</td>
+      <td>37.49</td>
+      <td>31.04</td>
+      <td>33.54</td>
+      <td>31.32</td>
+      <td>40.61</td>
+      <td>24.46</td>
+      <td>27.68</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>22.89</td>
+      <td>20.58</td>
+      <td>37.58</td>
+      <td>32.87</td>
+      <td>35.30</td>
+      <td>41.60</td>
+      <td>23.59</td>
+      <td>38.05</td>
+      <td>30.27</td>
+      <td>29.46</td>
+      <td>33.03</td>
+      <td>32.44</td>
+      <td>25.76</td>
+      <td>32.46</td>
+      <td>31.77</td>
+      <td>17.99</td>
+      <td>30.01</td>
+      <td>41.62</td>
+      <td>29.69</td>
+      <td>30.31</td>
+      <td>28.76</td>
+      <td>35.66</td>
+      <td>33.91</td>
+      <td>34.80</td>
+      <td>29.07</td>
+      <td>33.76</td>
+      <td>37.21</td>
+      <td>34.50</td>
+      <td>38.09</td>
+      <td>30.95</td>
+      <td>31.80</td>
+      <td>34.35</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>10.47</td>
+      <td>7.12</td>
+      <td>9.86</td>
+      <td>3.69</td>
+      <td>6.46</td>
+      <td>8.51</td>
+      <td>11.26</td>
+      <td>8.15</td>
+      <td>6.97</td>
+      <td>5.73</td>
+      <td>9.16</td>
+      <td>4.00</td>
+      <td>13.00</td>
+      <td>4.10</td>
+      <td>10.21</td>
+      <td>15.98</td>
+      <td>8.48</td>
+      <td>9.40</td>
+      <td>7.87</td>
+      <td>7.09</td>
+      <td>8.81</td>
+      <td>1.12</td>
+      <td>8.41</td>
+      <td>9.32</td>
+      <td>10.18</td>
+      <td>8.07</td>
+      <td>11.22</td>
+      <td>10.53</td>
+      <td>8.02</td>
+      <td>10.02</td>
+      <td>8.27</td>
+      <td>9.23</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>13.90</td>
+      <td>14.42</td>
+      <td>16.21</td>
+      <td>20.34</td>
+      <td>12.59</td>
+      <td>15.31</td>
+      <td>32.04</td>
+      <td>17.10</td>
+      <td>19.48</td>
+      <td>37.21</td>
+      <td>6.08</td>
+      <td>9.37</td>
+      <td>16.53</td>
+      <td>26.50</td>
+      <td>28.20</td>
+      <td>6.84</td>
+      <td>31.54</td>
+      <td>14.78</td>
+      <td>6.18</td>
+      <td>32.98</td>
+      <td>18.20</td>
+      <td>12.20</td>
+      <td>8.68</td>
+      <td>25.13</td>
+      <td>10.63</td>
+      <td>15.38</td>
+      <td>10.09</td>
+      <td>9.41</td>
+      <td>7.81</td>
+      <td>2.09</td>
+      <td>19.67</td>
+      <td>19.12</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>20.26</td>
+      <td>13.74</td>
+      <td>14.00</td>
+      <td>14.49</td>
+      <td>13.32</td>
+      <td>18.35</td>
+      <td>1.13</td>
+      <td>5.40</td>
+      <td>18.61</td>
+      <td>0.00</td>
+      <td>17.36</td>
+      <td>1.84</td>
+      <td>8.79</td>
+      <td>3.73</td>
+      <td>10.85</td>
+      <td>30.99</td>
+      <td>4.03</td>
+      <td>6.39</td>
+      <td>10.80</td>
+      <td>3.17</td>
+      <td>3.85</td>
+      <td>13.79</td>
+      <td>13.36</td>
+      <td>16.22</td>
+      <td>18.57</td>
+      <td>5.30</td>
+      <td>10.43</td>
+      <td>12.02</td>
+      <td>14.77</td>
+      <td>16.32</td>
+      <td>15.81</td>
+      <td>9.62</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s compare two finalists ‘FLA’ and ‘EDM’. At a glance, you can see that the Edmonton Oilers spent over 52% of its total budget on the Central position while the Florida Panthers spent below 36% on the central position making the expenditure more balanced among the positions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Team</th>
+      <th>EDM</th>
+      <th>FLA</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C</th>
+      <td>52.35</td>
+      <td>35.92</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>32.44</td>
+      <td>25.76</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>4.00</td>
+      <td>13.00</td>
+    </tr>
+    <tr>
+      <th>LW</th>
+      <td>9.37</td>
+      <td>16.53</td>
+    </tr>
+    <tr>
+      <th>RW</th>
+      <td>1.84</td>
+      <td>8.79</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distributions</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Position&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/d0c31ca360af2ee480fcda0ec0f9a66b9be84837151a7d7edc7167f4a8880a2d.png" src="../../../_images/d0c31ca360af2ee480fcda0ec0f9a66b9be84837151a7d7edc7167f4a8880a2d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/03/3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-counting-the-number-in-each-paired-category">Two Variables: Counting the Number in Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-variables-finding-a-characteristic-of-each-paired-category">Two Variables: Finding a Characteristic of Each Paired Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pivot-tables-rearranging-the-output-of-group">Pivot Tables: Rearranging the Output of <code class="docutils literal notranslate"><span class="pre">group</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nhl-salaries">Example: NHL Salaries</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rejwana Haque
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
