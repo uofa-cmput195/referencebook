@@ -75,6 +75,7 @@
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.5. Joining DataFrames by Columns" href="../5/Joining_DataFrames_by_Columns.html" />
     <link rel="prev" title="3.3. Cross-Classifying by More than One Variable" href="../3/Cross-Classifying_by_More_than_One_Variable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,6 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Manipulation and Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5/Joining_DataFrames_by_Columns.html">3.5. Joining DataFrames by Columns</a></li>
 </ul>
 </li>
 </ul>
@@ -534,7 +536,7 @@ Name: Score, dtype: object
 </div>
 </div>
 <p>What we have done here is <code class="docutils literal notranslate"><span class="pre">apply</span></code> the function <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> to each value in the <code class="docutils literal notranslate"><span class="pre">Score</span></code> column of the table <code class="docutils literal notranslate"><span class="pre">students</span></code>. The output is the array of corresponding return values of the function. For example, 85 became ‘B’, 92 became ‘A’ and so on.</p>
-<p>This array, which has the same length as the original <code class="docutils literal notranslate"><span class="pre">Score</span></code> column of the <code class="docutils literal notranslate"><span class="pre">students</span></code> table, can be used as the values in a new column called <code class="docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">Grad</span></code> alongside the existing <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Score</span></code> columns.</p>
+<p>This array, which has the same length as the original <code class="docutils literal notranslate"><span class="pre">Score</span></code> column of the <code class="docutils literal notranslate"><span class="pre">students</span></code> table, can be used as the values in a new column called <code class="docutils literal notranslate"><span class="pre">Letter</span> <span class="pre">Grade</span></code> alongside the existing <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Score</span></code> columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">students</span><span class="p">[</span><span class="s1">&#39;Letter Grade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">students</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorize_score</span><span class="p">)</span>
@@ -906,7 +908,7 @@ Name: Score, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>If we want to calculate the population growth fron year 2021 to 2022 it will throw a Typeerror.</p>
+<p>If we want to calculate the population growth fron year 2021 to 2022 it will raise a Typeerror.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -1265,6 +1267,15 @@ dtype: object
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">3.3. </span>Cross-Classifying by More than One Variable</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../5/Joining_DataFrames_by_Columns.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.5. </span>Joining DataFrames by Columns</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
