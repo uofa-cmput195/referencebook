@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4. Manipulation and Transformation of Tabular data &#8212; Introduction to Principles and Techniques of Data Science</title>
+    <title>Manipulation and Transformation of Tabular data &#8212; Introduction to Principles and Techniques of Data Science</title>
   
   
   
@@ -70,13 +70,11 @@
                 gtag('config', 'UA-148221575-1');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/4/Applying_a_Function_to_a_Column';</script>
-    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/4/Applying_a_Function_to_a_Column.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/4/Leo_Edit_Applying_a_Function_to_a_Column';</script>
+    <link rel="canonical" href="https://uofa-cmput195.github.io/referencebook/chapters/03/4/Leo_Edit_Applying_a_Function_to_a_Column.html" />
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3.5. Joining DataFrames by Columns" href="../5/Joining_DataFrames_by_Columns.html" />
-    <link rel="prev" title="3.3. Cross-Classifying by More than One Variable" href="../3/Cross-Classifying_by_More_than_One_Variable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,6 +136,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -183,7 +183,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-data-science.html">1. Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../01/1/intro.html">1.1. Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../01/1/1/computational-tools.html">1.1.1. Computational Tools</a></li>
@@ -205,11 +205,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02/5/endnote.html">2.5. Endnote</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tables.html">3. Working with Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1/Index-Slice.html">3.1. Selecting and Sorting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2/Classifying_by_One_Variable.html">3.2. Classifying by One Variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3/Cross-Classifying_by_More_than_One_Variable.html">3.3. Cross-Classifying by More than One Variable</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Manipulation and Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Applying_a_Function_to_a_Column.html">3.4. Manipulation and Transformation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../5/Joining_DataFrames_by_Columns.html">3.5. Joining DataFrames by Columns</a></li>
 </ul>
 </li>
@@ -290,7 +290,7 @@
       
       
       
-      <li><a href="../../../_sources/chapters/03/4/Applying_a_Function_to_a_Column.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/03/4/Leo_Edit_Applying_a_Function_to_a_Column.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,13 +384,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-function-to-a-column">3.4.1. Applying a Function to a Column</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">3.4.1.1. Functions as Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-function-to-a-column">Applying a Function to a Column</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">Functions as Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">3.4.2. Applying Functions to Rows</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">3.4.3. Example: Canada Population</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">3.4.3.1. Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">Applying Functions to Rows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">Example: Canada Population</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -407,7 +407,7 @@ document.write(`
   <div class="cell tag_remove-input docutils container">
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="manipulation-and-transformation-of-tabular-data">
-<h1><span class="section-number">3.4. </span>Manipulation and Transformation of Tabular data<a class="headerlink" href="#manipulation-and-transformation-of-tabular-data" title="Link to this heading">#</a></h1>
+<h1>Manipulation and Transformation of Tabular data<a class="headerlink" href="#manipulation-and-transformation-of-tabular-data" title="Link to this heading">#</a></h1>
 <p>In data science, we often need to perform complex transformations and calculations on our data. So far<span style='color:green'>,</span> we have seen some examples of creating new columns of tables by applying functions to existing columns or to other arrays. All of those functions took arrays as their arguments. But frequently we will want to convert the entries in a column by a function that doesn’t take an array as its argument.</p>
 <p>For example, it might take just one number as its argument, as in the function <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> defined below.</p>
 <div class="cell docutils container">
@@ -464,7 +464,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The function <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> simply returns letter grade given a score. Let’s consider a Dataframe containing information about students and their scores in a particular exam. To use this function on many scores at once, we will have to be able to <em>refer</em> to the function itself, without actually calling it. Analogously, we might show a cake recipe to a chef and ask her to use it to bake 6 cakes.  In that scenario, we are not using the recipe to bake any cakes ourselves; our role is merely to refer the chef to the recipe.  Similarly, we can ask a table to call <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> on 6 different numbers in a column.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> simply returns <span style='color:green'>a student’s</span> letter grade given <span style='color:green'>their score - a single scalar value</span>. Let’s consider a Dataframe containing information about students and their scores in a particular exam. To use this function on many scores at once, we will have to be able to <em>refer</em> to the function itself, without actually calling it. Analogously, we might show a cake recipe to a chef and ask her to use it to bake 6 cakes.  In that scenario, we are not using the recipe to bake any cakes ourselves; our role is merely to refer the chef to the recipe.  Similarly, we can ask a table to call <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> on 6 different numbers in a column.</p>
 <p>First, we create the dataframe <code class="docutils literal notranslate"><span class="pre">students</span></code> with a column for Name and Score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +525,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="applying-a-function-to-a-column">
-<h2><span class="section-number">3.4.1. </span>Applying a Function to a Column<a class="headerlink" href="#applying-a-function-to-a-column" title="Link to this heading">#</a></h2>
+<h2>Applying a Function to a Column<a class="headerlink" href="#applying-a-function-to-a-column" title="Link to this heading">#</a></h2>
 <p>To convert each of the scores to it’s letter grade, we will use a new Table method. The <code class="docutils literal notranslate"><span class="pre">apply</span></code> method calls a function on each element of a column, forming a new array of return values. To indicate which function to call, just name it (without quotation marks or parentheses). The name of the column of input values is a string that must still appear within quotation marks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -606,8 +606,8 @@ Name: Score, dtype: object
 </div></div></div>
 </div>
 <section id="functions-as-values">
-<h3><span class="section-number">3.4.1.1. </span>Functions as Values<a class="headerlink" href="#functions-as-values" title="Link to this heading">#</a></h3>
-<p>We’ve seen that Python has many kinds of values.  For example, <code class="docutils literal notranslate"><span class="pre">6</span></code> is a number value, <code class="docutils literal notranslate"><span class="pre">&quot;cake&quot;</span></code> is a text value, <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> is an empty dataframe, and <code class="docutils literal notranslate"><span class="pre">students</span></code> is a name for a dataframe value (since we defined it above).</p>
+<h3>Functions as Values<a class="headerlink" href="#functions-as-values" title="Link to this heading">#</a></h3>
+<p>We’ve seen that Python has many kinds of  <span style="color:green">data types</span>.  For example, <code class="docutils literal notranslate"><span class="pre">6</span></code> is a number value, <code class="docutils literal notranslate"><span class="pre">&quot;cake&quot;</span></code> is a text value, <span style="color:green">DataFrame()</span> is an empty table, and <code class="docutils literal notranslate"><span class="pre">ages</span></code> is a name for a table value (since we defined it above).</p>
 <p>In Python, every function, including <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code>, is also a value. It helps to think about recipes again. A recipe for cake is a real thing, distinct from cakes or ingredients, and you can give it a name like “Ani’s cake recipe.” When we defined <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code> with a <code class="docutils literal notranslate"><span class="pre">def</span></code> statement, we actually did two separate things: we created a function that converts a score to letter grade, and we gave it the name <code class="docutils literal notranslate"><span class="pre">categorize_score</span></code>.</p>
 <p>We can refer to any function by writing its name, without the parentheses or arguments necessary to actually call it. We did this when we called <code class="docutils literal notranslate"><span class="pre">apply</span></code> above.  When we write a function’s name by itself as the last line in a cell, Python produces a text representation of the function, just like it would print out a number or a string value.</p>
 <div class="cell docutils container">
@@ -643,7 +643,7 @@ Name: Score, dtype: object
 </section>
 </section>
 <section id="applying-functions-to-rows">
-<h2><span class="section-number">3.4.2. </span>Applying Functions to Rows<a class="headerlink" href="#applying-functions-to-rows" title="Link to this heading">#</a></h2>
+<h2>Applying Functions to Rows<a class="headerlink" href="#applying-functions-to-rows" title="Link to this heading">#</a></h2>
 <p>Sometimes, we may need to apply a function to a row instead of a column. Let’s see an example. For this example, we will redefine our initial <code class="docutils literal notranslate"><span class="pre">students</span></code> dataframe with an additional column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -794,9 +794,11 @@ Name: Score, dtype: object
 </div>
 </section>
 <section id="example-canada-population">
-<h2><span class="section-number">3.4.3. </span>Example: Canada Population<a class="headerlink" href="#example-canada-population" title="Link to this heading">#</a></h2>
+<h2>Example: Canada Population<a class="headerlink" href="#example-canada-population" title="Link to this heading">#</a></h2>
 <p>One of the most prevalent applications of the <code class="docutils literal notranslate"><span class="pre">apply</span></code> function is in data preprocessing. While we will explore data preprocessing techniques in greater detail in subsequent chapters, this section provides a brief example to illustrate how <code class="docutils literal notranslate"><span class="pre">apply</span></code> can be utilized for preprocessing tasks.</p>
+<p><span style="color:green">I would maybe add a quick definition of what preprocessing is.</span></p>
 <p>We will take Canada’s population dataset (in the years 2021 to 2022) for preprocessing.</p>
+<p><span style="color:green">Just a nitpick, but using PascalCase is generally not used for naming variables in python.</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Population</span>
@@ -1230,7 +1232,7 @@ dtype: object
 </div></div></div>
 </div>
 <section id="vectorized-operation-vs-row-wise-apply">
-<h3><span class="section-number">3.4.3.1. </span>Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#vectorized-operation-vs-row-wise-apply" title="Link to this heading">#</a></h3>
+<h3>Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#vectorized-operation-vs-row-wise-apply" title="Link to this heading">#</a></h3>
 <p>You might consider calculating the ‘%Growth’ column using row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code>. While this approach will yield correct results, you may wonder why vectorized operations are preferred over row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code>. The reason is that vectorized operations are not only simpler but also more efficient in terms of performance and memory usage.</p>
 <p>So, when is row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code> appropriate? In brief, row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code> is preferable in situations where vectorized operations are either infeasible or too complex to implement.</p>
 </section>
@@ -1267,24 +1269,6 @@ dtype: object
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../3/Cross-Classifying_by_More_than_One_Variable.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Cross-Classifying by More than One Variable</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../5/Joining_DataFrames_by_Columns.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>Joining DataFrames by Columns</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1301,13 +1285,13 @@ dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-function-to-a-column">3.4.1. Applying a Function to a Column</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">3.4.1.1. Functions as Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-function-to-a-column">Applying a Function to a Column</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-as-values">Functions as Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">3.4.2. Applying Functions to Rows</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">3.4.3. Example: Canada Population</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">3.4.3.1. Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-functions-to-rows">Applying Functions to Rows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-canada-population">Example: Canada Population</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-operation-vs-row-wise-apply">Vectorized operation vs Row-wise <code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
 </ul>
 </li>
 </ul>
