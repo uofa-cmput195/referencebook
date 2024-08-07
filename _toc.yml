@@ -50,3 +50,16 @@ sections:
     title: Manipulation and Transformation
   - file: chapters/03/5/Joining_DataFrames_by_Columns
     title: Joining DataFrames by Columns
+- file: chapters/04/Visualization
+  title: Visualization
+- file: chapters/05/Randomness
+  title: Randomness
+  sections:
+  - file: chapters/05/1/Conditional_Statements
+    title: Conditional Statements
+  - file: chapters/05/2/Iteration
+    title: Iteration
+  - file: chapters/05/3/Simulation
+    title: Simulation
+  - file: chapters/04/4/Finding_Probabilities
+    title: Finding Probabilities
